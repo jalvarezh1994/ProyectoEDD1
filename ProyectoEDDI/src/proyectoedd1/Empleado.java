@@ -5,6 +5,8 @@
  */
 package proyectoedd1;
 
+import java.util.Objects;
+
 /**
  *
  * @author jorge
@@ -42,5 +44,30 @@ public class Empleado {
     public String toString() {
         return "Empleado{" + "padre=" + padre + ", nombre=" + nombre + '}';
     }
+
+    
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Empleado other = (Empleado) obj;
+        if (this.padre != other.padre) {
+            return false;
+        }
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 
 }
