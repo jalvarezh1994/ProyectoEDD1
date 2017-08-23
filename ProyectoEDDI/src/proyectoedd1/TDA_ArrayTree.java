@@ -5,10 +5,18 @@
  */
 package proyectoedd1;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Diego
  */
 public class TDA_ArrayTree {
+    TDA_ArrayListInt indice = new TDA_ArrayListInt(10000);
+    TDA_ArrayListEmpleados arbol = new TDA_ArrayListEmpleados(10000);
+    
+    
+    
+    
     
 }

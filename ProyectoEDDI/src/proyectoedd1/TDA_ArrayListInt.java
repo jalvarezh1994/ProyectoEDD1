@@ -9,20 +9,18 @@ package proyectoedd1;
  *
  * @author Diego
  */
-public class TDA_ArrayListEmpleados {
-     private int size;
-    private Empleado[] list;
+public class TDA_ArrayListInt {
 
-    public TDA_ArrayListEmpleados(int size) {
+    private int size;
+    private int[] list;
+
+    public TDA_ArrayListInt(int size) {
+        list = new int[size];
         this.size = 0;
-        list = new  Empleado[size];
     }
-    
-    
 
-    
-    public boolean insert(Empleado ob, int p) {
-        if (p - 1 < size && p - 1 > 0) {
+    public boolean insert(int ob, int p) {
+        if (p - 1 < list.length && p - 1 >= 0) {
             list[p - 1] = ob;
             size++;
             return true;
@@ -31,77 +29,68 @@ public class TDA_ArrayListEmpleados {
         }
     }
 
-    
-    public Empleado get(int p) {
+    public int get(int p) {
         if (p - 1 < size && p - 1 > 0) {
             return list[p - 1];
         } else {
-            return null;
+            return -1;
         }
     }
 
-    
     public void eraser(int p) {
-        if (p - 1 < size && p - 1 > 0) {
-            list[p - 1] = null;
+        if (p - 1 < size && p - 1 >= 0) {
+            list[p - 1] = -1;
             for (int i = p; i < size; i++) {
                 if (i != size) {
                     list[i - 1] = list[i];
-                    list[i] = null;
+                    list[i] = -1;
                 }
             }
             size--;
         }
     }
 
-    
-    public int find(Empleado Empleado) {
+    public int find(int object) {
         for (int i = 0; i < size; i++) {
-            if (Empleado.equals(list[i]) ) {
+            if (object == list[i]) {
                 return i + 1;
             }
         }
         return -1;
     }
 
-    
-    public Empleado nextTo(int p) {
-        if (p + 2 > size || p + 2 < 0) {
-            return null;
+    public int nextTo(int p) {
+        if (p + 1 < size || p + 1 > 0) {
+            return -1;
         } else {
             return list[p + 2];
         }
     }
 
-    
-    public Empleado backTo(int p) {
+    public int backTo(int p) {
         if (p - 2 > size || p - 2 < 0) {
-            return null;
+            return -1;
         } else {
             return list[p - 2];
         }
     }
 
-    
     public void clear(int size) {
-        list = new Empleado[size];
+        list = new int[size];
         size = this.size;
     }
 
-    
     public boolean isEmpty() {
-     if (size == 0) {
+        if (size == 0) {
             return true;
         } else {
             return false;
         }
     }
 
-    
     public void printList() {
         for (int i = 0; i < size; i++) {
-            System.out.println(i+" "+list[i]);
+            System.out.println(i+1+ " " + list[i]);
         }
     }
-
 }
