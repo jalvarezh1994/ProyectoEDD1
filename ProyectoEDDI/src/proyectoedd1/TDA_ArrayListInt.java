@@ -90,7 +90,17 @@ public class TDA_ArrayListInt {
 
     public void printList() {
         for (int i = 0; i < size; i++) {
-            System.out.println(i+1+ " " + list[i]);
+            System.out.println(i + 1 + " " + list[i]);
         }
     }
+
+    public int getSize() {
+        return size;
+    }
+
+    @Override
+    public String toString() {
+        return "TDA_ArrayListInt{" + "size=" + size + ", list=" + list + '}';
+    }
+
 }

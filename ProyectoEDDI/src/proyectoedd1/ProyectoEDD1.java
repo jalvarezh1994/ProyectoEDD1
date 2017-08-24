@@ -9,7 +9,7 @@ package proyectoedd1;
  *
  * @author jorge
  */
-public class ProyectoEDD1 { 
+public class ProyectoEDD1 {
 
     /**
      * @param args the command line arguments
@@ -34,22 +34,20 @@ public class ProyectoEDD1 {
 //                throw new AssertionError();
 //        }
 
-    TDA_ArrayListInt probando = new TDA_ArrayListInt(10);
+        TDA_ArrayListInt probando = new TDA_ArrayListInt(10);
         probando.insert(10, 1);
         probando.insert(11, 2);
         probando.insert(2, 3);
         probando.insert(23, 4);
-        
+
         probando.printList();
-        
-        
-        
+
         System.out.println("");
-        
+
         System.out.println(probando.nextTo(0));
     }
-    
-    static void ejercicio1(){
-        
+
+    static void ejercicio1() {
+
     }
 }

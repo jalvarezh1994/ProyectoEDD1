@@ -10,17 +10,15 @@ package proyectoedd1;
  * @author Diego
  */
 public class TDA_ArrayListEmpleados {
-     private int size;
+
+    private int size;
     private Empleado[] list;
 
     public TDA_ArrayListEmpleados(int size) {
         this.size = 0;
-        list = new  Empleado[size];
+        list = new Empleado[size];
     }
-    
-    
 
-    
     public boolean insert(Empleado ob, int p) {
         if (p - 1 < size && p - 1 > 0) {
             list[p - 1] = ob;
@@ -31,7 +29,6 @@ public class TDA_ArrayListEmpleados {
         }
     }
 
-    
     public Empleado get(int p) {
         if (p - 1 < size && p - 1 > 0) {
             return list[p - 1];
@@ -40,7 +37,6 @@ public class TDA_ArrayListEmpleados {
         }
     }
 
-    
     public void eraser(int p) {
         if (p - 1 < size && p - 1 > 0) {
             list[p - 1] = null;
@@ -54,17 +50,15 @@ public class TDA_ArrayListEmpleados {
         }
     }
 
-    
     public int find(Empleado Empleado) {
         for (int i = 0; i < size; i++) {
-            if (Empleado.equals(list[i]) ) {
+            if (Empleado.equals(list[i])) {
                 return i + 1;
             }
         }
         return -1;
     }
 
-    
     public Empleado nextTo(int p) {
         if (p + 2 > size || p + 2 < 0) {
             return null;
@@ -73,7 +67,6 @@ public class TDA_ArrayListEmpleados {
         }
     }
 
-    
     public Empleado backTo(int p) {
         if (p - 2 > size || p - 2 < 0) {
             return null;
@@ -82,26 +75,32 @@ public class TDA_ArrayListEmpleados {
         }
     }
 
-    
     public void clear(int size) {
         list = new Empleado[size];
         size = this.size;
     }
 
-    
     public boolean isEmpty() {
-     if (size == 0) {
+        if (size == 0) {
             return true;
         } else {
             return false;
         }
     }
 
-    
     public void printList() {
         for (int i = 0; i < size; i++) {
-            System.out.println(i+" "+list[i]);
+            System.out.println(i + " " + list[i]);
         }
+    }
+
+    public int getSize() {
+        return size;
+    }
+    
+    @Override
+    public String toString() {
+        return "TDA_ArrayListEmpleados{" + "size=" + size + ", list=" + list + '}';
     }
 
 }
