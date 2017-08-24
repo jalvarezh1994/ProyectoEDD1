@@ -13,19 +13,20 @@ import java.util.ArrayList;
  */
 public class TDA_Tree {
 
-    int NODOS=100;
+    private int NODOS=100;
     
-    TDA_ArrayListInts indiceHijos = new TDA_ArrayListInts(NODOS);
-    TDA_ArrayListInt indicePadres = new TDA_ArrayListInt(NODOS);
-    TDA_ArrayListEmpleados arbolPadres = new TDA_ArrayListEmpleados(NODOS);
+    private TDA_ArrayListInts indiceHijos = new TDA_ArrayListInts(NODOS);
+    private TDA_ArrayListInt indicePadres = new TDA_ArrayListInt(NODOS);
+    private TDA_ArrayListEmpleados arbolPadres = new TDA_ArrayListEmpleados(NODOS);
 
     public void addNode(Empleado empleado, int padre) {//Si padre = -1 quiere decir que es el nodo raíz
         arbolPadres.insert(empleado, arbolPadres.getSize());
         indicePadres.insert(padre, indicePadres.getSize());
         if (padre >= -1) {
-            int pos=arbolPadres.getSize()-1;
+            int pos=arbolPadres.getSize();
             indiceHijos.insert(padre, pos, indiceHijos.getjSize(pos));
         }
+        System.out.println(arbolPadres.get(arbolPadres.getSize()));
     }
 
     public void printTree() {
@@ -40,7 +41,7 @@ public class TDA_Tree {
         } else {
             System.out.println(arbolPadres.get(nodo));
             for (int i = 0; i < nivel; i++) {
-                System.out.println("--");
+                System.out.print("--");
             }
             for (int i = 0; i < indiceHijos.getjSize(nodo); i++) {
                 printTreeFormat(indiceHijos.getHijo(nodo, i), nivel+1);

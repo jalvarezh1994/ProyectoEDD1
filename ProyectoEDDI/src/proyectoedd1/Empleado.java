@@ -13,24 +13,24 @@ import java.util.Objects;
  */
 public class Empleado {
 
-    int padre;
+    //int padre;
     String nombre;
 
     public Empleado() {
     }
 
-    public Empleado(int padre, String nombre) {
-        this.padre = padre;
+    public Empleado(/*int padre,*/ String nombre) {
+//        this.padre = padre;
         this.nombre = nombre;
     }
 
-    public int getPadre() {
-        return padre;
-    }
+//    public int getPadre() {
+//        return padre;
+//    }
 
-    public void setPadre(int padre) {
-        this.padre = padre;
-    }
+//    public void setPadre(int padre) {
+//        this.padre = padre;
+//    }
 
     public String getNombre() {
         return nombre;
@@ -42,7 +42,7 @@ public class Empleado {
 
     @Override
     public String toString() {
-        return "Empleado{" + "padre=" + padre + ", nombre=" + nombre + '}';
+        return "Empleado{" + ", nombre=" + nombre + '}';
     }
 
     
@@ -59,9 +59,9 @@ public class Empleado {
             return false;
         }
         final Empleado other = (Empleado) obj;
-        if (this.padre != other.padre) {
-            return false;
-        }
+//        if (this.padre != other.padre) {
+//            return false;
+//        }
         if (!Objects.equals(this.nombre, other.nombre)) {
             return false;
         }

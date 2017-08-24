@@ -17,8 +17,10 @@ public class TDA_ArrayListInts {
 
     public TDA_ArrayListInts(int size) {
         list = new int[size][size];
+        jSize=new int[size];
         //Esto hace que el programa sea menos eficiente se debe cambiar luego.
         for (int i = 0; i < size; i++) {
+            jSize[i]=0;
             for (int j = 0; j < size; j++) {
                 list[i][j]=-2;
             }

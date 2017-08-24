@@ -15,6 +15,12 @@ public class ProyectoEDD1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        TDA_Tree arbol = new TDA_Tree();
+        arbol.addNode(new Empleado("Dante"), -1);
+        arbol.addNode(new Empleado("Nero"), 0);
+        arbol.addNode(new Empleado("Vergil"), 1);
+        arbol.printTreeFormat(0, 0);
+
 //        System.out.println("Menú+\n"
 //                + "1. Cálculo de evaluación por desempeño.\n"
 //                + "2. Resolución de expresiones matemáticas.\n"
@@ -33,7 +39,6 @@ public class ProyectoEDD1 {
 //            default:
 //                throw new AssertionError();
 //        }
-
 //        TDA_ArrayListInt probando = new TDA_ArrayListInt(10);
 //        probando.insert(10, 1);
 //        probando.insert(11, 2);
