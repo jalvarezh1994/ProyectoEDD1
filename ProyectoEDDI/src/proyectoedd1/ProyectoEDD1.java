@@ -34,17 +34,17 @@ public class ProyectoEDD1 {
 //                throw new AssertionError();
 //        }
 
-        TDA_ArrayListInt probando = new TDA_ArrayListInt(10);
-        probando.insert(10, 1);
-        probando.insert(11, 2);
-        probando.insert(2, 3);
-        probando.insert(23, 4);
-
-        probando.printList();
-
-        System.out.println("");
-
-        System.out.println(probando.nextTo(0));
+//        TDA_ArrayListInt probando = new TDA_ArrayListInt(10);
+//        probando.insert(10, 1);
+//        probando.insert(11, 2);
+//        probando.insert(2, 3);
+//        probando.insert(23, 4);
+//
+//        probando.printList();
+//
+//        System.out.println("");
+//
+//        System.out.println(probando.nextTo(0));
     }
 
     static void ejercicio1() {
