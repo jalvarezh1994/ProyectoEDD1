@@ -16,6 +16,10 @@ public class TDA_ArrayListInt {
 
     public TDA_ArrayListInt(int size) {
         list = new int[size];
+        //TODO: Esto hace que el programa sea menos eficiente se debe cambiar luego
+        for (int i = 0; i < size; i++) {
+            list[i]=-2;
+        }
         this.size = 0;
     }
 

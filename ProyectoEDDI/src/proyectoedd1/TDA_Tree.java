@@ -13,11 +13,13 @@ import java.util.ArrayList;
  */
 public class TDA_Tree {
 
-    TDA_ArrayListInts indiceHijos = new TDA_ArrayListInts(10000);
-    TDA_ArrayListInt indicePadres = new TDA_ArrayListInt(10000);
-    TDA_ArrayListEmpleados arbolPadres = new TDA_ArrayListEmpleados(10000);
+    int NODOS=100;
+    
+    TDA_ArrayListInts indiceHijos = new TDA_ArrayListInts(NODOS);
+    TDA_ArrayListInt indicePadres = new TDA_ArrayListInt(NODOS);
+    TDA_ArrayListEmpleados arbolPadres = new TDA_ArrayListEmpleados(NODOS);
 
-    public void addNode(Empleado empleado, int padre) {
+    public void addNode(Empleado empleado, int padre) {//Si padre = -1 quiere decir que es el nodo raíz
         arbolPadres.insert(empleado, arbolPadres.getSize());
         indicePadres.insert(padre, indicePadres.getSize());
         if (padre >= -1) {
@@ -32,8 +34,18 @@ public class TDA_Tree {
         }
     }
 
-    public void printTreeFormat() {
-
+    public void printTreeFormat(int nodo,int nivel) {
+        if (indiceHijos.getjSize(nodo)>0) {
+            System.out.println(arbolPadres.get(nodo));
+        } else {
+            System.out.println(arbolPadres.get(nodo));
+            for (int i = 0; i < nivel; i++) {
+                System.out.println("--");
+            }
+            for (int i = 0; i < indiceHijos.getjSize(nodo); i++) {
+                printTreeFormat(indiceHijos.getHijo(nodo, i), nivel+1);
+            }
+        }
     }
 
     @Override
