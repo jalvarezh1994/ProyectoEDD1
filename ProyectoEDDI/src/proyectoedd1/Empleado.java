@@ -14,60 +14,24 @@ import java.util.Objects;
 public class Empleado {
 
     //int padre;
-    String nombre;
+    private String nombre;
+    private float puntaje = -1;
 
-    public Empleado() {
-    }
-
-    public Empleado(/*int padre,*/ String nombre) {
-//        this.padre = padre;
+    public Empleado(String nombre) {
         this.nombre = nombre;
     }
 
-//    public int getPadre() {
-//        return padre;
-//    }
-
-//    public void setPadre(int padre) {
-//        this.padre = padre;
-//    }
-
-    public String getNombre() {
-        return nombre;
+    public float getPuntaje() {
+        return puntaje;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setPuntaje(float puntaje) {
+        this.puntaje = puntaje;
     }
 
     @Override
     public String toString() {
-        return "Empleado{" + ", nombre=" + nombre + '}';
+        return "Empleado{" + "nombre=" + nombre + ", puntaje=" + puntaje + '}';
     }
-
-    
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Empleado other = (Empleado) obj;
-//        if (this.padre != other.padre) {
-//            return false;
-//        }
-        if (!Objects.equals(this.nombre, other.nombre)) {
-            return false;
-        }
-        return true;
-    }
-    
-    
 
 }
