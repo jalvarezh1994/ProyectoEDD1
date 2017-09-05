@@ -27,5 +27,4 @@ public class main {
         a.calcularRendimiento(1);
         a.imprimirRecursivo(0, 0);
     }
-
 }
