@@ -50,7 +50,6 @@ public class ArbolEmpleados {
     public void imprimirRecursivo(int padre, int nivel) {
         for (int i = 1; i < size; i++) {
             if (padres[i] == padre) {
-
                 for (int j = 0; j < nivel; j++) {
                     System.out.print("--");
                 }
