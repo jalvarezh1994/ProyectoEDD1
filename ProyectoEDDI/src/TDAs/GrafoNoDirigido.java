@@ -18,6 +18,9 @@ public class GrafoNoDirigido implements Grafo {
     @Override
     public boolean agregarNodo() {
         nodos.add(new Nodo(nodos.size()));
+        if (nodos.size() == 1) {
+            nodos.get(0).setColor(1);
+        }
         return true;
     }
 
@@ -42,26 +45,47 @@ public class GrafoNoDirigido implements Grafo {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public int recorridoEnProfundidad(int nodo,int padre) {
-        int acum=0;
-        nodos.get(0).setColor("blanco");
-        if (nodos.get(padre).getColor().compareTo("Blanco")==0) {
-            
+    //Para hacer el recorrido se debe iniciar desde el nodo 0, con padre 0
+    //recorridoEnProfundidad(0,0);
+    public int recorridoEnProfundidad(int nodoActual, int padre) {
+        int acum = 0;
+        Nodo father = nodos.get(padre);
+        Nodo node = nodos.get(nodoActual);
+        if (node.getColor() == 0 || (nodoActual == 0 && padre == 0)) {
+            node.setColor(father.getColor() * -1);
+        } else {
+            if (node.getColor() == father.getColor()) {
+                acum++;
+                //Cada vez que encuentra un vértice ya visitado y su color no es el que debería aumenta este contador
+                return acum;
+            } else {
+                return acum;
+            }
         }
-        for (int i = 0; i < nodos.get(nodo).getAdyacentes().size(); i++) {
+        for (int i = 0; i < node.getAdyacentes().size(); i++) {
+            acum += recorridoEnProfundidad(node.getAdyacentes().get(i), nodoActual);
         }
         return acum;
     }
 
     @Override
     public void borrarGrafo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        nodos.clear();
+    }
+    
+    //
+    public boolean bicoloreable(){
+        int x=recorridoEnProfundidad(0, 0);
+        if (x>0) {
+            return false;
+        }else{
+            return true;
+        }
     }
 
     public void imprimirGrafo() {
         for (int i = 0; i < nodos.size(); i++) {
-            System.out.println(nodos.get(i).getColor() + nodos.get(i).getIndice()
+            System.out.println(nodos.get(i).imprimirColor() + " " + nodos.get(i).getIndice()
                     + ": Adyacentes: " + nodos.get(i).getAdyacentes());
         }
     }

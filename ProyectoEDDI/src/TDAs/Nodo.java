@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Nodo {
 
-    private String color="no";
+    private int color;
     private int indice;
     private ArrayList<Integer> adyacentes = new ArrayList();
 
@@ -42,12 +42,21 @@ public class Nodo {
         this.adyacentes = adyacentes;
     }
 
-    public String getColor() {
+    public int getColor() {
         return color;
     }
 
-    public void setColor(String color) {
+    public void setColor(int color) {
         this.color = color;
     }
 
+    public String imprimirColor() {
+        if (this.color == 1) {
+            return "Blanco";
+        } else if (this.color == -1) {
+            return "Negro";
+        } else {
+            return "No visitado";
+        }
+    }
 }

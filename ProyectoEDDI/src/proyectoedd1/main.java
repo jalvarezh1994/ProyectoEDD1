@@ -22,9 +22,12 @@ public class main {
         grafo.agregarNodo();
         grafo.agregarNodo();
         grafo.agregarNodo();
+        grafo.agregarNodo();
         grafo.agregarArista(0, 1);
-        grafo.agregarArista(0, 2);
         grafo.agregarArista(1, 2);
+        grafo.agregarArista(2,3);
+        grafo.agregarArista(3, 0);
+        System.out.println(grafo.bicoloreable());
         grafo.imprimirGrafo();
         
     }

@@ -19,7 +19,7 @@ public interface Grafo {
 
     public boolean borrarArista(int posInicial, int posFinal);
 
-    public int recorridoEnProfundidad(int posicion,int padre);
+    //public int recorridoEnProfundidad(int posicion,int padre);
 
     public void borrarGrafo();
     
