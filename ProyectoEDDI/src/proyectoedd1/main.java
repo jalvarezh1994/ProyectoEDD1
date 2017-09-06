@@ -18,6 +18,8 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        System.out.println("Ejemplo de grafo bicoloreable");
         GrafoNoDirigido grafoBicoloreable=new GrafoNoDirigido();
         grafoBicoloreable.agregarNodo();
         grafoBicoloreable.agregarNodo();
@@ -31,6 +33,7 @@ public class main {
         System.out.println(grafoBicoloreable.bicoloreable());
         grafoBicoloreable.imprimirGrafo();
         
+        System.out.println("Ejemplo de grafo no bicoloreable");
         GrafoNoDirigido grafoNoBicolor=new GrafoNoDirigido();
         grafoNoBicolor.agregarNodo();
         grafoNoBicolor.agregarNodo();
@@ -41,7 +44,7 @@ public class main {
         grafoNoBicolor.agregarArista(2, 0);
         
         System.out.println(grafoNoBicolor.bicoloreable());
-        grafoBicoloreable.imprimirGrafo();
+        grafoNoBicolor.imprimirGrafo();
         
     }
 //        ArbolEmpleados a = new ArbolEmpleados(new Empleado("Jorge"), 100);
