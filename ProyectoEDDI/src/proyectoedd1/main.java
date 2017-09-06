@@ -18,17 +18,30 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        GrafoNoDirigido grafo=new GrafoNoDirigido();
-        grafo.agregarNodo();
-        grafo.agregarNodo();
-        grafo.agregarNodo();
-        grafo.agregarNodo();
-        grafo.agregarArista(0, 1);
-        grafo.agregarArista(1, 2);
-        grafo.agregarArista(2,3);
-        grafo.agregarArista(3, 0);
-        System.out.println(grafo.bicoloreable());
-        grafo.imprimirGrafo();
+        GrafoNoDirigido grafoBicoloreable=new GrafoNoDirigido();
+        grafoBicoloreable.agregarNodo();
+        grafoBicoloreable.agregarNodo();
+        grafoBicoloreable.agregarNodo();
+        grafoBicoloreable.agregarNodo();
+        
+        grafoBicoloreable.agregarArista(0, 1);
+        grafoBicoloreable.agregarArista(1, 2);
+        grafoBicoloreable.agregarArista(2,3);
+        grafoBicoloreable.agregarArista(3, 0);
+        System.out.println(grafoBicoloreable.bicoloreable());
+        grafoBicoloreable.imprimirGrafo();
+        
+        GrafoNoDirigido grafoNoBicolor=new GrafoNoDirigido();
+        grafoNoBicolor.agregarNodo();
+        grafoNoBicolor.agregarNodo();
+        grafoNoBicolor.agregarNodo();
+        
+        grafoNoBicolor.agregarArista(0, 1);
+        grafoNoBicolor.agregarArista(1, 2);
+        grafoNoBicolor.agregarArista(2, 0);
+        
+        System.out.println(grafoNoBicolor.bicoloreable());
+        grafoBicoloreable.imprimirGrafo();
         
     }
 //        ArbolEmpleados a = new ArbolEmpleados(new Empleado("Jorge"), 100);
