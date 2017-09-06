@@ -154,13 +154,26 @@ public class BinaryTree {
         return travel;
     }
 
+    public void imprimirRecursivo(int posicion , int nivel) {
+        for (int i = 0; i < sizeTree; i++) {
+            if(tree[i].getFather() == posicion){
+                for (int j = 0; j < nivel; j++) {
+                    System.out.print("--");
+                }
+                System.out.println(tree[i].getSimbol());
+                imprimirRecursivo(i, nivel+1);
+            }
+        }
+    }
+
     public void creacionArbolExpresion(String expresion) {
         TDA_ArrayStack pNodo = new TDA_ArrayStack(expresion.length());
         expresion = convertirInfijaPostfija(expresion);
         int father = 0;
+        int cont = 0;
         for (int i = expresion.length() - 1; i >= 0; i--) {
 
-            if (expresion.charAt(i) == '*' || expresion.charAt(i) == '/'
+            if (expresion.charAt(i) == '*' || expresion.charAt(i) == '/' || expresion.charAt(i) == '^'
                     || expresion.charAt(i) == '-' || expresion.charAt(i) == '+') {
                 if (isTreeEmpty()) {
                     pNodo.push(new Node(expresion.charAt(i)));
@@ -168,20 +181,24 @@ public class BinaryTree {
 
                 } else {
                     father = ((Node) pNodo.top()).getPos();
-                    pNodo.push(new Node(expresion.charAt(i)));
-                    this.addNode((Node) pNodo.top(), father);
+                    Node n_node = new Node(expresion.charAt(i));
+                    this.addNode(n_node, father);
+                    pNodo.push(n_node);
                 }
 
             } else {
+                // System.out.println("Estado pila @@@@@");
+                // pNodo.print();
                 father = ((Node) pNodo.top()).getPos();
-                pNodo.push(new Node(expresion.charAt(i)));
-                this.addNode((Node) pNodo.pop(), father);
-                
-               
+                //pNodo.push(new Node(expresion.charAt(i)));
+                this.addNode(new Node(expresion.charAt(i)), father);
+                if (((Node) pNodo.top()).getLeft() != NULL && ((Node) pNodo.top()).getRight() != NULL) {
+                    pNodo.pop();
+                }
+
             }
 
         }
-        
 
     }
 
@@ -193,7 +210,7 @@ public class BinaryTree {
         for (int i = 0; i < expresion.length(); i++) {
             //  System.out.println(pExpresiones.push(expresion.charAt(i)));
             if (expresion.charAt(i) != ' ' && expresion.charAt(i) != '(') {
-                if (expresion.charAt(i) == '*' || expresion.charAt(i) == '/'
+                if (expresion.charAt(i) == '*' || expresion.charAt(i) == '/' || expresion.charAt(i) == '^'
                         || expresion.charAt(i) == '-' || expresion.charAt(i) == '+' || expresion.charAt(i) == ')') {
 
                     if (pExpresiones.isEmpty()) {
