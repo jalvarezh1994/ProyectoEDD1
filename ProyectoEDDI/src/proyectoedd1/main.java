@@ -5,8 +5,10 @@
  */
 package proyectoedd1;
 
-import TDAs.GrafoNoDirigido;
-import TDAs.Nodo;
+import TDAs.ArbolEmpleados;
+import TDAs.Empleado;
+import TDAs.GrafoBicoloreable;
+import TDAs.NodoBicoloreable;
 
 /**
  *
@@ -19,34 +21,36 @@ public class main {
      */
     public static void main(String[] args) {
         
-        System.out.println("Ejemplo de grafo bicoloreable");
-        GrafoNoDirigido grafoBicoloreable=new GrafoNoDirigido();
-        grafoBicoloreable.agregarNodo();
-        grafoBicoloreable.agregarNodo();
-        grafoBicoloreable.agregarNodo();
-        grafoBicoloreable.agregarNodo();
-        
-        grafoBicoloreable.agregarArista(0, 1);
-        grafoBicoloreable.agregarArista(1, 2);
-        grafoBicoloreable.agregarArista(2,3);
-        grafoBicoloreable.agregarArista(3, 0);
-        System.out.println(grafoBicoloreable.bicoloreable());
-        grafoBicoloreable.imprimirGrafo();
-        
-        System.out.println("Ejemplo de grafo no bicoloreable");
-        GrafoNoDirigido grafoNoBicolor=new GrafoNoDirigido();
-        grafoNoBicolor.agregarNodo();
-        grafoNoBicolor.agregarNodo();
-        grafoNoBicolor.agregarNodo();
-        
-        grafoNoBicolor.agregarArista(0, 1);
-        grafoNoBicolor.agregarArista(1, 2);
-        grafoNoBicolor.agregarArista(2, 0);
-        
-        System.out.println(grafoNoBicolor.bicoloreable());
-        grafoNoBicolor.imprimirGrafo();
-        
     }
+
+//        System.out.println("Ejemplo de grafo bicoloreable");
+//        GrafoBicoloreable grafoBicoloreable = new GrafoBicoloreable();
+//        grafoBicoloreable.agregarNodo();
+//        grafoBicoloreable.agregarNodo();
+//        grafoBicoloreable.agregarNodo();
+//        grafoBicoloreable.agregarNodo();
+//
+//        grafoBicoloreable.agregarArista(0, 1);
+//        grafoBicoloreable.agregarArista(1, 2);
+//        grafoBicoloreable.agregarArista(2, 3);
+//        grafoBicoloreable.agregarArista(3, 0);
+//        grafoBicoloreable.agregarArista(0,2);
+//        System.out.println(grafoBicoloreable.bicoloreable());
+//        grafoBicoloreable.imprimirGrafo();
+//
+//        System.out.println("Ejemplo de grafo no bicoloreable");
+//        GrafoBicoloreable grafoNoBicolor = new GrafoBicoloreable();
+//        grafoNoBicolor.agregarNodo();
+//        grafoNoBicolor.agregarNodo();
+//        grafoNoBicolor.agregarNodo();
+//
+//        grafoNoBicolor.agregarArista(0, 1);
+//        grafoNoBicolor.agregarArista(1, 2);
+//        grafoNoBicolor.agregarArista(2, 0);
+//
+//        System.out.println(grafoNoBicolor.bicoloreable());
+//        grafoNoBicolor.imprimirGrafo();    
+//    
 //        ArbolEmpleados a = new ArbolEmpleados(new Empleado("Jorge"), 100);
 //        a.agregarNodo(new Empleado("Alex"), 1);
 //        a.agregarNodo(new Empleado("Rodner"), 2);

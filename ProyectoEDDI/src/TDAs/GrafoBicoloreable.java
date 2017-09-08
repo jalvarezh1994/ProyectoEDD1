@@ -11,22 +11,21 @@ import java.util.ArrayList;
  *
  * @author jorge
  */
-public class GrafoNoDirigido implements Grafo {
+public class GrafoBicoloreable implements Grafo {
 
-    ArrayList<Nodo> nodos = new ArrayList();
+    ArrayList<NodoBicoloreable> nodos = new ArrayList();
 
     @Override
     public boolean agregarNodo() {
-        nodos.add(new Nodo(nodos.size()));
-        if (nodos.size() == 1) {
-            nodos.get(0).setColor(1);
-        }
+        nodos.add(new NodoBicoloreable(nodos.size()));
         return true;
     }
 
     @Override
     public boolean agregarArista(int nodoInicial, int nodoFinal) {
-        if (nodos.size() > 1) {
+        if (nodos.size() > 1 && nodoInicial != nodoFinal
+                && nodoInicial >= 0 && nodoInicial < nodos.size()
+                && nodoFinal >= 0 && nodoFinal < nodos.size()) {
             nodos.get(nodoInicial).agregarAdyacente(nodoFinal);
             nodos.get(nodoFinal).agregarAdyacente(nodoInicial);
             return true;
@@ -49,36 +48,39 @@ public class GrafoNoDirigido implements Grafo {
     //recorridoEnProfundidad(0,0);
     public int recorridoEnProfundidad(int nodoActual, int padre) {
         int acum = 0;
-        Nodo father = nodos.get(padre);
-        Nodo node = nodos.get(nodoActual);
-        if (node.getColor() == 0 || (nodoActual == 0 && padre == 0)) {
+        NodoBicoloreable father = nodos.get(padre);
+        NodoBicoloreable node = nodos.get(nodoActual);
+        if (node.getColor() == 0 || (nodoActual == padre)) {
+            //if (node.getColor() == 0 || (nodoActual == 0 && padre == 0)) {
             node.setColor(father.getColor() * -1);
+            for (int i = 0; i < node.getAdyacentes().size(); i++) {
+                acum += recorridoEnProfundidad(node.getAdyacentes().get(i), nodoActual);
+            }
+            return acum;
         } else {
             if (node.getColor() == father.getColor()) {
                 acum++;
-                //Cada vez que encuentra un vértice ya visitado y su color no es el que debería aumenta este contador
+                //Cada vez que encuentra un vértice ya visitado y
+                //su color no es el que debería, aumenta este contador
                 return acum;
             } else {
                 return acum;
             }
         }
-        for (int i = 0; i < node.getAdyacentes().size(); i++) {
-            acum += recorridoEnProfundidad(node.getAdyacentes().get(i), nodoActual);
-        }
-        return acum;
     }
 
     @Override
     public void borrarGrafo() {
         nodos.clear();
     }
-    
+
     //
-    public boolean bicoloreable(){
-        int x=recorridoEnProfundidad(0, 0);
-        if (x>0) {
+    public boolean bicoloreable() {
+        nodos.get(0).setColor(1);
+        int x = recorridoEnProfundidad(0, 0);
+        if (x > 0) {
             return false;
-        }else{
+        } else {
             return true;
         }
     }
