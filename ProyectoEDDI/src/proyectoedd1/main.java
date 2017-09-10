@@ -9,6 +9,7 @@ import Ejercicio1.ArbolEmpleados;
 import Ejercicio1.Empleado;
 import Ejercicio4.GrafoBicoloreable;
 import Ejercicio4.NodoBicoloreable;
+import Ejercicio8.GrafoKruskal;
 
 /**
  *
@@ -20,6 +21,20 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        GrafoKruskal grafo = new GrafoKruskal();
+        grafo.agregarNodo();
+        grafo.agregarNodo();
+        grafo.agregarNodo();
+        grafo.agregarNodo();
+        grafo.agregarArista(0, 1, 3);
+        grafo.agregarArista(1, 2, 2);
+        grafo.agregarArista(2, 3, 2);
+        grafo.agregarArista(3, 0, 7);
+        grafo.agregarArista(0, 2, 6);
+        grafo.ordenarAristas();
+        grafo.arbolMinimo();
+        grafo.imprimirGrafo();
+        
         
     }
 

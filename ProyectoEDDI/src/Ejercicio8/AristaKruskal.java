@@ -39,4 +39,9 @@ public class AristaKruskal extends Arista {
         this.respuesta = respuesta;
     }
 
+    @Override
+    public String toString() {
+        return "AristaKruskal{" + "grupo=" + grupo + ", respuesta=" + respuesta + '}';
+    }
+
 }
