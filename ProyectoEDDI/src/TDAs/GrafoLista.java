@@ -11,12 +11,12 @@ import java.util.ArrayList;
  *
  * @author jorge
  */
-public class GrafoKruskal implements Grafo {
+public class GrafoLista implements Grafo {
 
-    ArrayList<Nodo> nodos = new ArrayList();
-    ArrayList<Arista> aristas = new ArrayList();
+    private ArrayList<Nodo> nodos = new ArrayList();
+    private ArrayList<Arista> aristas = new ArrayList();
 
-    public GrafoKruskal() {
+    public GrafoLista() {
     }
 
     @Override
@@ -32,11 +32,28 @@ public class GrafoKruskal implements Grafo {
                 && nodoFinal >= 0 && nodoFinal < nodos.size()) {
             nodos.get(nodoInicial).agregarAdyacente(nodoFinal);
             nodos.get(nodoFinal).agregarAdyacente(nodoInicial);
-            //aristas.add(new Arista(nodos.get(nodoInicial), nodos.get(nodoFinal), peso));
+            aristas.add(new Arista(nodoInicial, nodoFinal));
             return true;
         } else {
             return false;
         }
+    }
+
+    public boolean agregarArista(int nodoInicial, int nodoFinal, int peso) {
+        if (nodos.size() > 1 && nodoInicial != nodoFinal
+                && nodoInicial >= 0 && nodoInicial < nodos.size()
+                && nodoFinal >= 0 && nodoFinal < nodos.size()) {
+            nodos.get(nodoInicial).agregarAdyacente(nodoFinal);
+            nodos.get(nodoFinal).agregarAdyacente(nodoInicial);
+            aristas.add(new Arista(nodoInicial, nodoFinal, peso));
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public Arista getArista(int pos) {
+        return aristas.get(pos);
     }
 
     @Override
@@ -51,14 +68,19 @@ public class GrafoKruskal implements Grafo {
 
     @Override
     public void borrarGrafo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        nodos.clear();
+        aristas.clear();
     }
 
     @Override
     public void imprimirGrafo() {
         for (int i = 0; i < nodos.size(); i++) {
-            System.out.println(nodos.get(i).imprimirColor() + " " + nodos.get(i).getIndice()
+            System.out.println("" + nodos.get(i).getIndice()
                     + ": Adyacentes: " + nodos.get(i).getAdyacentes());
         }
+        for (int i = 0; i < aristas.size(); i++) {
+            System.out.println(aristas.get(i));
+        }
     }
+
 }

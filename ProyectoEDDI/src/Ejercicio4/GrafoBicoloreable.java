@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package TDAs;
+package Ejercicio4;
 
+import Ejercicio4.NodoBicoloreable;
+import TDAs.Grafo;
 import java.util.ArrayList;
 
 /**
@@ -13,7 +15,7 @@ import java.util.ArrayList;
  */
 public class GrafoBicoloreable implements Grafo {
 
-    ArrayList<NodoBicoloreable> nodos = new ArrayList();
+    protected ArrayList<NodoBicoloreable> nodos = new ArrayList();
 
     @Override
     public boolean agregarNodo() {

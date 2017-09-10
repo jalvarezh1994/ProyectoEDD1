@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package TDAs;
+package Ejercicio1;
 
 /**
  *
@@ -32,6 +32,7 @@ public class ArbolEmpleados {
             padres[size] = padre;
             empleados[size] = objeto;
             size++;
+            //Hace falta agregar el nodo al padre
             return true;
         } else {
             return false;
@@ -59,6 +60,7 @@ public class ArbolEmpleados {
         }
     }
 
+    //Hace falta usar los hijos en lugar de recorrer todo el arreglo    
     //Una función recursiva que calcula y asigna el rendimiento de cada empleado
     //Para calcular el rendimiento de todos los empleados usar: calcularRendimiento(1);
     public float calcularRendimiento(int padre) {
