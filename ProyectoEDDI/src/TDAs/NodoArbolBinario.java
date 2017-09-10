@@ -79,7 +79,7 @@ public class NodoArbolBinario {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Nodo other = (Nodo) obj;
+        final NodoArbolBinario other = (NodoArbolBinario) obj;
         if (this.elemento != other.elemento) {
             return false;
         }
