@@ -5,23 +5,15 @@
  */
 package proyectoedd1;
 
-<<<<<<< HEAD
-import TDAs.ArbolEmpleados;
-import TDAs.Empleado;
-import TDAs.GrafoBicoloreable;
-import TDAs.NodoBicoloreable;
 import TDAs.ArbolBinario;
 import java.util.ArrayList;
-=======
+
 import Ejercicio1.ArbolEmpleados;
 import Ejercicio1.Empleado;
 import Ejercicio4.GrafoBicoloreable;
 import Ejercicio4.NodoBicoloreable;
-<<<<<<< HEAD
+
 import Ejercicio8.GrafoKruskal;
-=======
->>>>>>> e8df33ad431a3e46f8475799ee8b0c7c335d7ce0
->>>>>>> 295f1e7cc2b230a65242cd694c5873154b47964d
 
 /**
  *
@@ -33,7 +25,7 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-<<<<<<< HEAD
+
         GrafoKruskal grafo = new GrafoKruskal();
         grafo.agregarNodo();
         grafo.agregarNodo();
@@ -47,11 +39,6 @@ public class main {
         grafo.ordenarAristas();
         grafo.arbolMinimo();
         grafo.imprimirGrafo();
-        
-        
-=======
-
->>>>>>> 295f1e7cc2b230a65242cd694c5873154b47964d
     }
 
 //        System.out.println("Ejemplo de grafo bicoloreable");

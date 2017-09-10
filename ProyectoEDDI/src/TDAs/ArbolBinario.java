@@ -15,11 +15,11 @@ public class ArbolBinario {
 
     private final int NULL = -1;
     private int tamArbol;
-    private Nodo[] arbol;
+    private NodoArbolBinario[] arbol;
     private int raiz;
     private ArrayList travel;
 
-    public Nodo[] getArbol() {
+    public NodoArbolBinario[] getArbol() {
         return arbol;
     }
 
@@ -44,18 +44,18 @@ public class ArbolBinario {
 
     public ArbolBinario(int numElementos) {
         try {
-            this.arbol = new Nodo[numElementos];
+            this.arbol = new NodoArbolBinario[numElementos];
             this.raiz = NULL;
             this.travel = null;
         } catch (Exception e) {
             System.out.println("No puede ser negativo");
-            this.arbol = new Nodo[100];
+            this.arbol = new NodoArbolBinario[100];
             this.raiz = NULL;
             this.travel = null;
         }
     }
 
-    public Nodo father(Nodo nodo) {
+    public NodoArbolBinario father(NodoArbolBinario nodo) {
         if (nodo.getFather() == raiz) {
             return null;
         } else {
@@ -67,17 +67,17 @@ public class ArbolBinario {
         return (NULL == raiz);
     }
 
-    public Nodo nodoRaiz() {
+    public NodoArbolBinario nodoRaiz() {
         if (!estaVacio()) {
             return arbol[raiz];
         }
         return null;
     }
 
-    public boolean agregarNodo(Nodo nodo, int father) {
+    public boolean agregarNodoArbolBinario(NodoArbolBinario nodo, int father) {
         if (!estaVacio()) {
-            Nodo n_node = nodo;
-            Nodo node_add = arbol[father];
+            NodoArbolBinario n_node = nodo;
+            NodoArbolBinario node_add = arbol[father];
 
             if (node_add.getRight() == NULL) {
                 arbol[tamArbol] = n_node;
@@ -99,7 +99,7 @@ public class ArbolBinario {
 
             return false;
         } else {
-            Nodo n_node = nodo;
+            NodoArbolBinario n_node = nodo;
             arbol[tamArbol] = n_node;
             n_node.setPos(tamArbol);
             raiz = n_node.getPos();
@@ -186,7 +186,7 @@ public class ArbolBinario {
     }
 
     public void crearArbolExpresiones(ArrayList<String> exp) {
-        PilaArreglos pilaNodo = new PilaArreglos(exp.size());
+        PilaArreglos pilaNodoArbolBinario = new PilaArreglos(exp.size());
         ArrayList<String> nodos = exp;
         int padre = 0;
         int cont = 0;
@@ -194,20 +194,20 @@ public class ArbolBinario {
 
             if (esOperador(nodos.get(i))) {
                 if (estaVacio()) {
-                    pilaNodo.push(new Nodo(nodos.get(i)));
-                    this.agregarNodo((Nodo) pilaNodo.top(), padre);
+                    pilaNodoArbolBinario.push(new NodoArbolBinario(nodos.get(i)));
+                    this.agregarNodoArbolBinario((NodoArbolBinario) pilaNodoArbolBinario.top(), padre);
                 } else {
-                    padre = ((Nodo) pilaNodo.top()).getPos();
-                    Nodo n_nodo = new Nodo(nodos.get(i));
-                    this.agregarNodo(n_nodo, padre);
-                    pilaNodo.push(n_nodo);
+                    padre = ((NodoArbolBinario) pilaNodoArbolBinario.top()).getPos();
+                    NodoArbolBinario n_nodo = new NodoArbolBinario(nodos.get(i));
+                    this.agregarNodoArbolBinario(n_nodo, padre);
+                    pilaNodoArbolBinario.push(n_nodo);
                 }
 
             } else {
-                padre = ((Nodo) pilaNodo.top()).getPos();
-                this.agregarNodo(new Nodo(nodos.get(i)), padre);
-                if (((Nodo) pilaNodo.top()).getLeft() != NULL && ((Nodo) pilaNodo.top()).getRight() != NULL) {
-                    pilaNodo.pop();
+                padre = ((NodoArbolBinario) pilaNodoArbolBinario.top()).getPos();
+                this.agregarNodoArbolBinario(new NodoArbolBinario(nodos.get(i)), padre);
+                if (((NodoArbolBinario) pilaNodoArbolBinario.top()).getLeft() != NULL && ((NodoArbolBinario) pilaNodoArbolBinario.top()).getRight() != NULL) {
+                    pilaNodoArbolBinario.pop();
                 }
 
             }
@@ -238,7 +238,7 @@ public class ArbolBinario {
             travel = new ArrayList();
         }
         if (NULL != posicion) {
-            Nodo nodo = arbol[posicion];
+            NodoArbolBinario nodo = arbol[posicion];
             postOrden(nodo.getLeft());
             postOrden(nodo.getRight());
             evaluar(nodo);
@@ -247,7 +247,7 @@ public class ArbolBinario {
         return travel;
     }
 
-    public void evaluar(Nodo nodo) {
+    public void evaluar(NodoArbolBinario nodo) {
         double resultado = 0;
         if (nodo.getLeft() != NULL && nodo.getRight() != NULL) {
            // System.out.println("Que tienen");
