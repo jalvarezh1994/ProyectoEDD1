@@ -3,43 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package TDAs;
+package Ejercicio4;
 
+import TDAs.Nodo;
 import java.util.ArrayList;
 
 /**
  *
  * @author jorge
  */
-public class NodoBicoloreable {
+public class NodoBicoloreable extends Nodo {
 
     private int color;
-    private int indice;
-    private ArrayList<Integer> adyacentes = new ArrayList();
 
     public NodoBicoloreable(int indice) {
         this.indice = indice;
-    }
-
-    public boolean agregarAdyacente(int adyacente) {
-        adyacentes.add(adyacente);
-        return true;
-    }
-
-    public int getIndice() {
-        return indice;
-    }
-
-    public void setIndice(int indice) {
-        this.indice = indice;
-    }
-
-    public ArrayList<Integer> getAdyacentes() {
-        return adyacentes;
-    }
-
-    public void setAdyacentes(ArrayList<Integer> adyacentes) {
-        this.adyacentes = adyacentes;
     }
 
     public int getColor() {

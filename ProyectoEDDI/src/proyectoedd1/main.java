@@ -5,10 +5,10 @@
  */
 package proyectoedd1;
 
-import TDAs.ArbolEmpleados;
-import TDAs.Empleado;
-import TDAs.GrafoBicoloreable;
-import TDAs.NodoBicoloreable;
+import Ejercicio1.ArbolEmpleados;
+import Ejercicio1.Empleado;
+import Ejercicio4.GrafoBicoloreable;
+import Ejercicio4.NodoBicoloreable;
 
 /**
  *

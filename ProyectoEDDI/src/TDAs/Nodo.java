@@ -13,8 +13,8 @@ import java.util.ArrayList;
  */
 public class Nodo {
 
-    int indice;
-    ArrayList<Integer> adyacentes = new ArrayList();
+    protected int indice;
+    protected ArrayList<Integer> adyacentes = new ArrayList();
 
     public Nodo() {
 
@@ -22,6 +22,32 @@ public class Nodo {
 
     public Nodo(int indice) {
         this.indice = indice;
+    }
+
+    public int getIndice() {
+        return indice;
+    }
+
+    public void setIndice(int indice) {
+        this.indice = indice;
+    }
+
+    public ArrayList<Integer> getAdyacentes() {
+        return adyacentes;
+    }
+
+    public void setAdyacentes(ArrayList<Integer> adyacentes) {
+        this.adyacentes = adyacentes;
+    }
+
+    public boolean agregarAdyacente(int adyacente) {
+        adyacentes.add(adyacente);
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Nodo{" + "indice=" + indice + ", adyacentes=" + adyacentes + '}';
     }
 
 }
