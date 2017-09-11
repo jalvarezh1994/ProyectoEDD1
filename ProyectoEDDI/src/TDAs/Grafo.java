@@ -15,6 +15,8 @@ public interface Grafo {
 
     public boolean agregarArista(int nodoInicial, int nodoFinal);
 
+    public boolean agregarArista(int nodoInicial, int nodoFinal, int peso);
+
     public boolean borrarNodo(int posicion);
 
     public boolean borrarArista(int posInicial, int posFinal);

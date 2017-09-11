@@ -5,6 +5,7 @@
  */
 package Ejercicio1;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -16,6 +17,7 @@ public class Empleado {
     //int padre;
     private String nombre;
     private float puntaje = -1;
+    private ArrayList<Integer> hijos = new ArrayList();
 
     public Empleado(String nombre) {
         this.nombre = nombre;
@@ -27,6 +29,26 @@ public class Empleado {
 
     public void setPuntaje(float puntaje) {
         this.puntaje = puntaje;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public ArrayList<Integer> getHijos() {
+        return hijos;
+    }
+
+    public void setHijos(ArrayList<Integer> hijos) {
+        this.hijos = hijos;
+    }
+
+    public void agregarHijo(int hijo) {
+        hijos.add(hijo);
     }
 
     @Override

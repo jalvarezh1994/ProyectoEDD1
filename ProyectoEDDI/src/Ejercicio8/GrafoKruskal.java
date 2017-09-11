@@ -6,6 +6,7 @@
 package Ejercicio8;
 
 import TDAs.Arista;
+import TDAs.Nodo;
 import TDAs.GrafoLista;
 
 /**
@@ -14,9 +15,27 @@ import TDAs.GrafoLista;
  */
 public class GrafoKruskal extends GrafoLista {
 
-    private boolean solucion = false;
-    private int grupo = 0;
     private final int INF = (int) Double.POSITIVE_INFINITY;
+
+    @Override
+    public boolean agregarNodo() {
+        nodos.add(new NodoKruskal(nodos.size()));
+        return true;
+    }
+
+    @Override
+    public boolean agregarArista(int nodoInicial, int nodoFinal, int peso) {
+        if (nodos.size() > 1 && nodoInicial != nodoFinal
+                && nodoInicial >= 0 && nodoInicial < nodos.size()
+                && nodoFinal >= 0 && nodoFinal < nodos.size()) {
+            nodos.get(nodoInicial).agregarAdyacente(nodoFinal);
+            nodos.get(nodoFinal).agregarAdyacente(nodoInicial);
+            aristas.add(new AristaKruskal(nodoInicial, nodoFinal, peso));
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public void ordenarAristas() {
         int contador = 0;
@@ -40,8 +59,32 @@ public class GrafoKruskal extends GrafoLista {
 
     public void arbolMinimo() {
         ordenarAristas();
+        int grupo = 0;
         for (int i = 0; i < aristas.size(); i++) {
-
+            NodoKruskal Nodo1 = (NodoKruskal) nodos.get(aristas.get(i).getNodo1());
+            NodoKruskal Nodo2 = (NodoKruskal) nodos.get(aristas.get(i).getNodo2());
+            if (!Nodo1.isRespuesta() && !Nodo2.isRespuesta()) {
+                Nodo1.setRespuesta(true);
+                Nodo2.setRespuesta(true);
+                Nodo1.setGrupo(grupo);
+                Nodo2.setGrupo(grupo);
+                ((AristaKruskal) aristas.get(i)).setRespuesta(true);
+                ((AristaKruskal) aristas.get(i)).setGrupo(grupo);
+                grupo++;
+            } else if (Nodo1.getGrupo() != Nodo2.getGrupo()) {
+                int grupoTemporal;
+                if (Nodo1.getGrupo() < Nodo2.getGrupo()) {
+                    grupoTemporal = Nodo1.getGrupo();
+                } else {
+                    grupoTemporal = Nodo2.getGrupo();
+                }
+                Nodo1.setGrupo(grupoTemporal);
+                Nodo2.setGrupo(grupoTemporal);
+                Nodo1.setRespuesta(true);
+                Nodo2.setRespuesta(true);
+                ((AristaKruskal) aristas.get(i)).setGrupo(grupoTemporal);
+                ((AristaKruskal) aristas.get(i)).setRespuesta(true);
+            }
         }
     }
 

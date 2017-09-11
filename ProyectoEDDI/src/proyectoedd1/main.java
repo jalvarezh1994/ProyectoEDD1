@@ -25,7 +25,6 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
         GrafoKruskal grafo = new GrafoKruskal();
         grafo.agregarNodo();
         grafo.agregarNodo();
@@ -36,7 +35,6 @@ public class main {
         grafo.agregarArista(2, 3, 2);
         grafo.agregarArista(3, 0, 7);
         grafo.agregarArista(0, 2, 6);
-        grafo.ordenarAristas();
         grafo.arbolMinimo();
         grafo.imprimirGrafo();
     }
