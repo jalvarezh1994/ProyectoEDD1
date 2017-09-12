@@ -13,10 +13,10 @@ import java.util.ArrayList;
  */
 public class GrafoDirigidoMatriz implements Grafo {
 
-    int[][] adyacencia;
-    int size = 0;
-    int nodosMaximos;
-    int INF = (int) Double.POSITIVE_INFINITY;
+    protected int[][] adyacencia;
+    protected int size = 0;
+    protected int nodosMaximos;
+    protected int INF = (int) Double.POSITIVE_INFINITY;
 
     public GrafoDirigidoMatriz(int nodosMaximos) {
         this.nodosMaximos = nodosMaximos;

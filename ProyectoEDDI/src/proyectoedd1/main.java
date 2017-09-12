@@ -12,6 +12,7 @@ import Ejercicio1.ArbolEmpleados;
 import Ejercicio1.Empleado;
 import Ejercicio4.GrafoBicoloreable;
 import Ejercicio4.NodoBicoloreable;
+import Ejercicio6.GrafoDijkstra;
 
 import Ejercicio8.GrafoKruskal;
 import TDAs.GrafoDirigidoMatriz;
@@ -26,7 +27,7 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        GrafoDirigidoMatriz gr = new GrafoDirigidoMatriz(20);
+        GrafoDijkstra gr = new GrafoDijkstra(20);
         gr.agregarNodo();
         gr.agregarNodo();
         gr.agregarNodo();
@@ -35,7 +36,9 @@ public class main {
         gr.agregarArista(1, 2, 3);
         gr.agregarArista(2, 3, 2);
         gr.agregarArista(3, 0, 7);
+        gr.agregarArista(0, 2, 1);
         gr.imprimirGrafo();
+        gr.dijkstra(0);
     }
 
 //        GrafoKruskal grafo = new GrafoKruskal();
