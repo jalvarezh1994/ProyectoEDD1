@@ -27,19 +27,26 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        GrafoDijkstra gr = new GrafoDijkstra(20);
-        gr.agregarNodo();
-        gr.agregarNodo();
-        gr.agregarNodo();
-        gr.agregarNodo();
-        gr.agregarArista(0, 1, 6);
-        gr.agregarArista(1, 2, 3);
-        gr.agregarArista(2, 3, 2);
-        gr.agregarArista(3, 0, 7);
-        gr.agregarArista(0, 2, 1);
-        gr.imprimirGrafo();
-        gr.dijkstra(0);
+        
     }
+//        GrafoDijkstra gr = new GrafoDijkstra(20);
+//        gr.agregarNodo();
+//        gr.agregarNodo();
+//        gr.agregarNodo();
+//        gr.agregarNodo();
+//        gr.agregarNodo();
+//        gr.agregarNodo();
+//        gr.agregarArista(0, 1, 7);
+//        gr.agregarArista(0, 2, 3);
+//        gr.agregarArista(1, 2, 1);
+//        gr.agregarArista(1, 3, 6);
+//        gr.agregarArista(2, 4, 8);
+//        gr.agregarArista(3, 2, 3);
+//        gr.agregarArista(4, 3, 2);
+//        gr.agregarArista(3, 5, 2);
+//        gr.agregarArista(4, 5, 8);
+//        gr.imprimirGrafo();
+//        gr.dijkstra(0);
 
 //        GrafoKruskal grafo = new GrafoKruskal();
 //        grafo.agregarNodo();

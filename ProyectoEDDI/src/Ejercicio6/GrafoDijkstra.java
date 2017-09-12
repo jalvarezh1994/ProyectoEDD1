@@ -61,7 +61,7 @@ public class GrafoDijkstra extends GrafoDirigidoMatriz {
                 }
             } while (salir == false);
             for (int i = 0; i < size; i++) {
-                System.out.println("" + solucion[i] + "\t");
+                System.out.println("" + i + " " + solucion[i] + "\t");
             }
             return true;
         } else {
