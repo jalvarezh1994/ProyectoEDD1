@@ -26,6 +26,7 @@ public class GrafoDijkstra extends GrafoDirigidoMatriz {
             for (int i = 0; i < size; i++) {
                 solucion[i] = new Vertice(adyacencia[vertice][i], vertice);
             }
+            solucion[vertice].setPesoAcumulado(0);
             boolean salir;
             do {
                 salir = true;
@@ -46,14 +47,11 @@ public class GrafoDijkstra extends GrafoDirigidoMatriz {
                 for (int i = 0; i < size; i++) {
                     if (seleccionado[i] == false) {
                         if (adyacencia[posMenor][i] + menor < solucion[i].getPesoAcumulado()
-                                &&adyacencia[posMenor][i]!=INF) {
+                                && adyacencia[posMenor][i] != INF) {
                             solucion[i].setProcedencia(posMenor);
                             solucion[i].setPesoAcumulado(menor + adyacencia[posMenor][i]);
                         }
                     }
-                }
-                for (int i = 0; i < size; i++) {
-                    System.out.println("" + solucion[i] + "\t");
                 }
                 for (int i = 0; i < size; i++) {
                     if (seleccionado[i] == false) {
@@ -62,6 +60,9 @@ public class GrafoDijkstra extends GrafoDirigidoMatriz {
                     }
                 }
             } while (salir == false);
+            for (int i = 0; i < size; i++) {
+                System.out.println("" + solucion[i] + "\t");
+            }
             return true;
         } else {
             return false;
