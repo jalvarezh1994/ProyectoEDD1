@@ -13,8 +13,6 @@ import java.util.ArrayList;
  */
 public class Nodo {
 
-<<<<<<< HEAD
-
     private Object elemento;
     private int pos;
     private int father;
@@ -23,11 +21,6 @@ public class Nodo {
 
     protected int indice;
     protected ArrayList<Integer> adyacentes = new ArrayList();
-
-=======
-    protected int indice;
-    protected ArrayList<Integer> adyacentes = new ArrayList();
->>>>>>> 725a0695538e46976b02a3dc66ffdf9a589bd377
 
     public Nodo() {
     }
@@ -56,7 +49,5 @@ public class Nodo {
         adyacentes.add(adyacente);
         return true;
     }
-
-    
 
 }

@@ -5,14 +5,6 @@
  */
 package proyectoedd1;
 
-<<<<<<< HEAD
-
-import TDAs.ArbolEmpleados;
-import TDAs.Empleado;
-import TDAs.GrafoBicoloreable;
-import TDAs.NodoBicoloreable;
-=======
->>>>>>> 725a0695538e46976b02a3dc66ffdf9a589bd377
 import TDAs.ArbolBinario;
 import java.util.ArrayList;
 
@@ -22,11 +14,8 @@ import Ejercicio4.GrafoBicoloreable;
 import Ejercicio4.NodoBicoloreable;
 import Ejercicio6.GrafoDijkstra;
 
-<<<<<<< HEAD
-=======
 import Ejercicio8.GrafoKruskal;
 import TDAs.GrafoDirigidoMatriz;
->>>>>>> 725a0695538e46976b02a3dc66ffdf9a589bd377
 
 /**
  *
@@ -38,7 +27,7 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+
     }
 //        GrafoDijkstra gr = new GrafoDijkstra(20);
 //        gr.agregarNodo();
