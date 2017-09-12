@@ -14,6 +14,7 @@ import Ejercicio4.GrafoBicoloreable;
 import Ejercicio4.NodoBicoloreable;
 
 import Ejercicio8.GrafoKruskal;
+import TDAs.GrafoDirigidoMatriz;
 
 /**
  *
@@ -25,20 +26,31 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        GrafoKruskal grafo = new GrafoKruskal();
-        grafo.agregarNodo();
-        grafo.agregarNodo();
-        grafo.agregarNodo();
-        grafo.agregarNodo();
-        grafo.agregarArista(0, 1, 3);
-        grafo.agregarArista(1, 2, 2);
-        grafo.agregarArista(2, 3, 2);
-        grafo.agregarArista(3, 0, 7);
-        grafo.agregarArista(0, 2, 6);
-        grafo.arbolMinimo();
-        grafo.imprimirGrafo();
+        GrafoDirigidoMatriz gr = new GrafoDirigidoMatriz(20);
+        gr.agregarNodo();
+        gr.agregarNodo();
+        gr.agregarNodo();
+        gr.agregarNodo();
+        gr.agregarArista(0, 1, 6);
+        gr.agregarArista(1, 2, 3);
+        gr.agregarArista(2, 3, 2);
+        gr.agregarArista(3, 0, 7);
+        gr.imprimirGrafo();
     }
 
+//        GrafoKruskal grafo = new GrafoKruskal();
+//        grafo.agregarNodo();
+//        grafo.agregarNodo();
+//        grafo.agregarNodo();
+//        grafo.agregarNodo();
+//        grafo.agregarArista(0, 1, 3);
+//        grafo.agregarArista(1, 2, 2);
+//        grafo.agregarArista(2, 3, 2);
+//        grafo.agregarArista(3, 0, 7);
+//        grafo.agregarArista(0, 2, 6);
+//        grafo.arbolMinimo();
+//        grafo.imprimirGrafo();
+//
 //        System.out.println("Ejemplo de grafo bicoloreable");
 //        GrafoBicoloreable grafoBicoloreable = new GrafoBicoloreable();
 //        grafoBicoloreable.agregarNodo();
