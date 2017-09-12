@@ -13,16 +13,16 @@ import java.util.ArrayList;
  */
 public class Nodo {
 
-<<<<<<< HEAD
+
     private Object elemento;
     private int pos;
     private int father;
     private int right;
     private int left;
-=======
+
     protected int indice;
     protected ArrayList<Integer> adyacentes = new ArrayList();
->>>>>>> e8df33ad431a3e46f8475799ee8b0c7c335d7ce0
+
 
     public Nodo(Object info) {
         elemento = info;
@@ -125,9 +125,6 @@ public class Nodo {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "Nodo{" + "indice=" + indice + ", adyacentes=" + adyacentes + '}';
-    }
+    
 
 }

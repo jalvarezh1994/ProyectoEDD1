@@ -5,19 +5,19 @@
  */
 package proyectoedd1;
 
-<<<<<<< HEAD
+
 import TDAs.ArbolEmpleados;
 import TDAs.Empleado;
 import TDAs.GrafoBicoloreable;
 import TDAs.NodoBicoloreable;
 import TDAs.ArbolBinario;
 import java.util.ArrayList;
-=======
+
 import Ejercicio1.ArbolEmpleados;
 import Ejercicio1.Empleado;
 import Ejercicio4.GrafoBicoloreable;
 import Ejercicio4.NodoBicoloreable;
->>>>>>> e8df33ad431a3e46f8475799ee8b0c7c335d7ce0
+
 
 /**
  *
