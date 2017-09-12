@@ -11,9 +11,9 @@ package TDAs;
  */
 public class Arista {
 
-    int nodo1;
-    int nodo2;
-    int peso;
+    protected int nodo1;
+    protected int nodo2;
+    protected int peso;
 
     public Arista() {
     }
@@ -23,7 +23,7 @@ public class Arista {
         this.nodo2 = nodo2;
         this.peso = peso;
     }
-    
+
     public Arista(int nodo1, int nodo2) {
         this.nodo1 = nodo1;
         this.nodo2 = nodo2;

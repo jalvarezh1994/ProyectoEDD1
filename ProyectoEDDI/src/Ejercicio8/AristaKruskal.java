@@ -13,10 +13,14 @@ import TDAs.Arista;
  */
 public class AristaKruskal extends Arista {
 
-    int grupo;
-    boolean respuesta;
+    private int grupo = (int) Double.POSITIVE_INFINITY;
+    private boolean respuesta;
 
     public AristaKruskal() {
+    }
+
+    public AristaKruskal(int nodo1, int nodo2) {
+        super(nodo1, nodo2);
     }
 
     public AristaKruskal(int nodo1, int nodo2, int peso) {
@@ -37,6 +41,11 @@ public class AristaKruskal extends Arista {
 
     public void setRespuesta(boolean respuesta) {
         this.respuesta = respuesta;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " AristaKruskal{" + "grupo=" + grupo + ", respuesta=" + respuesta + '}';
     }
 
 }

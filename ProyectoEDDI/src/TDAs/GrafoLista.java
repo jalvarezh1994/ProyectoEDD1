@@ -13,8 +13,8 @@ import java.util.ArrayList;
  */
 public class GrafoLista implements Grafo {
 
-    private ArrayList<Nodo> nodos = new ArrayList();
-    private ArrayList<Arista> aristas = new ArrayList();
+    protected ArrayList<Nodo> nodos = new ArrayList();
+    protected ArrayList<Arista> aristas = new ArrayList();
 
     public GrafoLista() {
     }

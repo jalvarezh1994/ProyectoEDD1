@@ -94,4 +94,9 @@ public class GrafoBicoloreable implements Grafo {
         }
     }
 
+    @Override
+    public boolean agregarArista(int nodoInicial, int nodoFinal, int peso) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

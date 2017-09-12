@@ -14,14 +14,12 @@ public class ArbolEmpleados {
     private int nodosMaximos;
     private int size = 2;
     private int[] padres;
-    private int[][] hijos;
     private Empleado[] empleados;
 
     //El nodo raíz se encuentra en la posición 1
     public ArbolEmpleados(Empleado raiz, int nodosMaximos) {
         this.nodosMaximos = nodosMaximos;
         padres = new int[nodosMaximos];
-        hijos = new int[nodosMaximos][nodosMaximos];
         empleados = new Empleado[nodosMaximos];
         empleados[1] = raiz;
         padres[1] = 0;
@@ -31,6 +29,7 @@ public class ArbolEmpleados {
         if (padre > 0) {
             padres[size] = padre;
             empleados[size] = objeto;
+            empleados[padre].agregarHijo(size);
             size++;
             //Hace falta agregar el nodo al padre
             return true;
@@ -69,11 +68,9 @@ public class ArbolEmpleados {
         } else {
             float acumulador = 0;
             int contador = 0;
-            for (int i = 1; i < size; i++) {
-                if (padres[i] == padre) {
-                    acumulador += calcularRendimiento(i);
-                    contador++;
-                }
+            for (int i = 0; i < empleados[padre].getHijos().size(); i++) {
+                acumulador += calcularRendimiento(empleados[padre].getHijos().get(i));
+                contador++;
             }
             empleados[padre].setPuntaje(acumulador / contador);
             return empleados[padre].getPuntaje();
