@@ -78,7 +78,8 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
         if (!presionado) {
             seleccion = -1;
             if (e.isMetaDown()) {
-                nodos2D.add(new Nodo2D(e.getX() - 15, e.getY() - 15, Color.BLACK));
+                nodos2D.add(new Nodo2D(e.getX() - 15, e.getY() - 15,
+                        Color.BLACK, nodos2D.size()));
             }
         }
 
@@ -117,13 +118,20 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
     @Override
     public void keyTyped(KeyEvent e) {
         if (seleccion != -1 && e.getKeyCode() == 0) {
-            nodos2D.remove(seleccion);
+            ArrayList<Arista2D> remover=new ArrayList();
             for (int i = 0; i < aristas2D.size(); i++) {
-                Arista2D a=aristas2D.get(i);
-                if (a.getNodo1().equals(nodos2D.get(i))
-                        ||a.getNodo2().equals(nodos2D.get(i))) {
-                    aristas2D.remove(i);
+                Arista2D a = aristas2D.get(i);
+                if (a.getNodo1().equals(nodos2D.get(seleccion))
+                        || a.getNodo2().equals(nodos2D.get(seleccion))) {
+                    remover.add(aristas2D.get(i));
                 }
+            }
+            nodos2D.remove(seleccion);
+            for (int i = 0; i < remover.size(); i++) {
+                aristas2D.remove(remover.get(i));
+            }
+            for (int i = seleccion; i < nodos2D.size(); i++) {
+                nodos2D.get(i).setPos(i);
             }
             seleccion = -1;
             repaint();
@@ -138,6 +146,46 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
     @Override
     public void keyReleased(KeyEvent e) {
 
+    }
+
+    public ArrayList<Nodo2D> getNodos2D() {
+        return nodos2D;
+    }
+
+    public void setNodos2D(ArrayList<Nodo2D> nodos2D) {
+        this.nodos2D = nodos2D;
+    }
+
+    public ArrayList<Arista2D> getAristas2D() {
+        return aristas2D;
+    }
+
+    public void setAristas2D(ArrayList<Arista2D> aristas2D) {
+        this.aristas2D = aristas2D;
+    }
+
+    public int getTamanoNodo() {
+        return tamanoNodo;
+    }
+
+    public void setTamanoNodo(int tamanoNodo) {
+        this.tamanoNodo = tamanoNodo;
+    }
+
+    public boolean isArrastrar() {
+        return arrastrar;
+    }
+
+    public void setArrastrar(boolean arrastrar) {
+        this.arrastrar = arrastrar;
+    }
+
+    public int getSeleccion() {
+        return seleccion;
+    }
+
+    public void setSeleccion(int seleccion) {
+        this.seleccion = seleccion;
     }
 
 }

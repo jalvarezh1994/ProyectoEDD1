@@ -16,11 +16,13 @@ public class Nodo2D {
     private int x, y;
     private Color color;
     private boolean pressed;
+    private int pos;
 
-    public Nodo2D(int x, int y, Color color) {
+    public Nodo2D(int x, int y, Color color, int pos) {
         this.x = x;
         this.y = y;
         this.color = color;
+        this.pos = pos;
     }
 
     public int getX() {
@@ -64,6 +66,14 @@ public class Nodo2D {
 
     public void setPressed(boolean pressed) {
         this.pressed = pressed;
+    }
+
+    public int getPos() {
+        return pos;
+    }
+
+    public void setPos(int pos) {
+        this.pos = pos;
     }
 
 }
