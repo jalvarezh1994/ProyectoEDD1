@@ -5,6 +5,7 @@
  */
 package proyectoedd1;
 
+import TDAs.ArbolBinario;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.util.ArrayList;

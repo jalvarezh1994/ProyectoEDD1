@@ -205,7 +205,12 @@ public class ArbolBinario {
 
             } else {
                 padre = ((NodoArbolBinario) pilaNodoArbolBinario.top()).getPos();
-                this.agregarNodoArbolBinario(new NodoArbolBinario(nodos.get(i)), padre);
+                if (padre != NULL) {
+                    this.agregarNodoArbolBinario(new NodoArbolBinario(nodos.get(i)), padre);
+               } else {
+                    this.agregarNodoArbolBinario(new NodoArbolBinario(nodos.get(i)), raiz);
+
+               }
                 if (((NodoArbolBinario) pilaNodoArbolBinario.top()).getLeft() != NULL && ((NodoArbolBinario) pilaNodoArbolBinario.top()).getRight() != NULL) {
                     pilaNodoArbolBinario.pop();
                 }
@@ -250,11 +255,11 @@ public class ArbolBinario {
     public void evaluar(NodoArbolBinario nodo) {
         double resultado = 0;
         if (nodo.getLeft() != NULL && nodo.getRight() != NULL) {
-           // System.out.println("Que tienen");
+            // System.out.println("Que tienen");
             //System.out.println(arbol[nodo.getLeft()].getElemento().toString() + " " + arbol[nodo.getRight()].getElemento().toString());
             double operador1 = Double.parseDouble(arbol[nodo.getLeft()].getElemento().toString());
             double operador2 = Double.parseDouble(arbol[nodo.getRight()].getElemento().toString());
-           // System.out.println(operador1 + "  " + operador2);
+            // System.out.println(operador1 + "  " + operador2);
             switch (nodo.getElemento().toString()) {
                 case "-":
                     resultado = operador1 - operador2;
