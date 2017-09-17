@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Ejercicio7;
+package E7Kruskal;
 
 import TDAs.Arista;
 

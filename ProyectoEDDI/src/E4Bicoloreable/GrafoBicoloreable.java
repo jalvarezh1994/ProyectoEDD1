@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Ejercicio4;
+package E4Bicoloreable;
 
-import Ejercicio4.NodoBicoloreable;
+import E4Bicoloreable.NodoBicoloreable;
 import TDAs.Grafo;
 import java.util.ArrayList;
 

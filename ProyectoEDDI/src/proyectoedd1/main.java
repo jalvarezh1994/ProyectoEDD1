@@ -8,15 +8,15 @@ package proyectoedd1;
 import TDAs.ArbolBinario;
 import java.util.ArrayList;
 
-import Ejercicio1.ArbolEmpleados;
-import Ejercicio1.Empleado;
-import Ejercicio4.GrafoBicoloreable;
-import Ejercicio4.NodoBicoloreable;
-import Ejercicio5.GrafoFloyd;
-import Ejercicio6.GrafoDijkstra;
+import E1Empleados.ArbolEmpleados;
+import E1Empleados.Empleado;
+import E4Bicoloreable.GrafoBicoloreable;
+import E4Bicoloreable.NodoBicoloreable;
+import E5Floyd.GrafoFloyd;
+import E6Dijkstra.GrafoDijkstra;
 
-import Ejercicio7.GrafoKruskal;
-import Ejercicio8.GrafoPrim;
+import E7Kruskal.GrafoKruskal;
+import E8Prim.GrafoPrim;
 import TDAs.GrafoDirigidoMatriz;
 import javax.swing.JFrame;
 

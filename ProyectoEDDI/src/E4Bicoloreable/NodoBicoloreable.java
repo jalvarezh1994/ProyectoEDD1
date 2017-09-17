@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Ejercicio4;
+package E4Bicoloreable;
 
 import TDAs.Nodo;
 import java.util.ArrayList;
