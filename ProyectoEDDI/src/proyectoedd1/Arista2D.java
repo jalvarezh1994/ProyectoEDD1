@@ -13,8 +13,9 @@ import java.awt.Color;
  */
 public class Arista2D {
 
-    Nodo2D nodo1, nodo2;
-    Color color;
+    private int posNodo1,posNodo2;
+    private Nodo2D nodo1, nodo2;
+    private Color color;
 
     public Arista2D(Nodo2D nodo1, Nodo2D nodo2, Color color) {
         this.nodo1 = nodo1;

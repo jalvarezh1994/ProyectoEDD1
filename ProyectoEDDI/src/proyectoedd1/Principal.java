@@ -5,6 +5,7 @@
  */
 package proyectoedd1;
 
+import E4Bicoloreable.GrafoBicoloreable;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class Principal extends javax.swing.JFrame {
      * Creates new form principal
      */
     public Principal() {
-        Lienzo lienzo=new Lienzo();
+        Lienzo lienzo = new Lienzo();
         initComponents();
     }
 
@@ -166,11 +167,21 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-       
+
     }//GEN-LAST:event_formMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        ArrayList<Nodo2D> nodos2D=lienzo1.getNodos2D();
+        ArrayList<Arista2D> aristas2D=lienzo1.getAristas2D();
+        GrafoBicoloreable gr=new GrafoBicoloreable();
+        for (int i = 0; i < nodos2D.size(); i++) {
+            gr.agregarNodo();
+        }
+        for (int i = 0; i < aristas2D.size(); i++) {
+            Arista2D a=aristas2D.get(i);
+            gr.agregarArista(a.getNodo1().getPos(), a.getNodo2().getPos());
+        }
+        System.out.println(gr.bicoloreable());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
