@@ -5,9 +5,12 @@
  */
 package proyectoedd1;
 
+import TDAs.ArbolBinario;
 import E4Bicoloreable.GrafoBicoloreable;
+
 import E7Kruskal.AristaKruskal;
 import E7Kruskal.GrafoKruskal;
+
 import java.awt.Canvas;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -263,15 +266,15 @@ public class Principal extends javax.swing.JFrame {
             gr.agregarArista(a.getNodo1().getPos(), a.getNodo2().getPos(), a.getPeso());
         }
         gr.arbolMinimo();
-        int total=0;
+        int total = 0;
         for (int i = 0; i < aristas2D.size(); i++) {
             AristaKruskal a = (AristaKruskal) gr.getArista(i);
             if (a.isRespuesta()) {
                 aristas2D.get(a.getPos()).setColor(Color.YELLOW);
-                total+=a.getPeso();
+                total += a.getPeso();
             }
         }
-        lienzo1.getGraphics().drawString("Total: "+total, 50, 50);
+        lienzo1.getGraphics().drawString("Total: " + total, 50, 50);
         lienzo1.repaint();
     }
 

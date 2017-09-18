@@ -76,10 +76,28 @@ public class ArbolEmpleados {
             return empleados[padre].getPuntaje();
         }
     }
+    
+    
 
     public Empleado getNodo(int pos) {
         return empleados[pos];
     }
+
+    public int[] getPadres() {
+        return padres;
+    }
+
+    public Empleado[] getEmpleados() {
+        return empleados;
+    }
+    
+    
+
+    public void setPadres(int[] padres) {
+        this.padres = padres;
+    }
+    
+    
 
     @Override
     public String toString() {
