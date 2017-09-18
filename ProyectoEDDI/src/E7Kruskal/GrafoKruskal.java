@@ -30,7 +30,7 @@ public class GrafoKruskal extends GrafoLista {
                 && nodoFinal >= 0 && nodoFinal < nodos.size()) {
             nodos.get(nodoInicial).agregarAdyacente(nodoFinal);
             nodos.get(nodoFinal).agregarAdyacente(nodoInicial);
-            aristas.add(new AristaKruskal(nodoInicial, nodoFinal, peso));
+            aristas.add(new AristaKruskal(nodoInicial, nodoFinal, peso, aristas.size()));
             return true;
         } else {
             return false;

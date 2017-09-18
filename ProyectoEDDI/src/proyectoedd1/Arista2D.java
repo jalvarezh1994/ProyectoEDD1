@@ -13,14 +13,26 @@ import java.awt.Color;
  */
 public class Arista2D {
 
-    private int posNodo1,posNodo2;
+    private int posNodo1, posNodo2;
     private Nodo2D nodo1, nodo2;
     private Color color;
+    private String texto = "";
+    private int peso;
+
+    public Arista2D(Nodo2D nodo1, Nodo2D nodo2, Color color, int peso) {
+        this.nodo1 = nodo1;
+        this.nodo2 = nodo2;
+        this.color = color;
+        this.peso = peso;
+        texto = "" + peso;
+    }
 
     public Arista2D(Nodo2D nodo1, Nodo2D nodo2, Color color) {
         this.nodo1 = nodo1;
         this.nodo2 = nodo2;
         this.color = color;
+        posNodo1 = nodo1.getPos();
+        posNodo2 = nodo2.getPos();
     }
 
     public Nodo2D getNodo1() {
@@ -47,9 +59,41 @@ public class Arista2D {
         this.color = color;
     }
 
+    public int getPosNodo1() {
+        return posNodo1;
+    }
+
+    public void setPosNodo1(int posNodo1) {
+        this.posNodo1 = posNodo1;
+    }
+
+    public int getPosNodo2() {
+        return posNodo2;
+    }
+
+    public void setPosNodo2(int posNodo2) {
+        this.posNodo2 = posNodo2;
+    }
+
+    public String getTexto() {
+        return texto;
+    }
+
+    public void setTexto(String texto) {
+        this.texto = texto;
+    }
+
+    public int getPeso() {
+        return peso;
+    }
+
+    public void setPeso(int peso) {
+        this.peso = peso;
+    }
+
     @Override
     public String toString() {
-        return "Arista2D{" + "nodo1=" + nodo1 + ", nodo2=" + nodo2 + ", color=" + color + '}';
+        return "[" + nodo1.getPos() + "," + nodo2.getPos() + ":" + peso + "]";
     }
 
 }

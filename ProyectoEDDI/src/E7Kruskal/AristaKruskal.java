@@ -15,6 +15,7 @@ public class AristaKruskal extends Arista {
 
     private int grupo = (int) Double.POSITIVE_INFINITY;
     private boolean respuesta;
+    private int pos;
 
     public AristaKruskal() {
     }
@@ -25,6 +26,11 @@ public class AristaKruskal extends Arista {
 
     public AristaKruskal(int nodo1, int nodo2, int peso) {
         super(nodo1, nodo2, peso);
+    }
+
+    public AristaKruskal(int nodo1, int nodo2, int peso, int pos) {
+        super(nodo1, nodo2, peso);
+        this.pos = pos;
     }
 
     public int getGrupo() {
@@ -41,6 +47,14 @@ public class AristaKruskal extends Arista {
 
     public void setRespuesta(boolean respuesta) {
         this.respuesta = respuesta;
+    }
+
+    public int getPos() {
+        return pos;
+    }
+
+    public void setPos(int pos) {
+        this.pos = pos;
     }
 
     @Override

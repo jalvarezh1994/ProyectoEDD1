@@ -6,9 +6,12 @@
 package proyectoedd1;
 
 import E4Bicoloreable.GrafoBicoloreable;
+import E7Kruskal.AristaKruskal;
+import E7Kruskal.GrafoKruskal;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 
 /**
@@ -34,16 +37,19 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Grafos = new javax.swing.ButtonGroup();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         PanelCanvas = new javax.swing.JPanel();
         lienzo1 = new proyectoedd1.Lienzo();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        jToggleButton2 = new javax.swing.JToggleButton();
+        jToggleButton3 = new javax.swing.JToggleButton();
+        jToggleButton4 = new javax.swing.JToggleButton();
+        jToggleButton5 = new javax.swing.JToggleButton();
+        jButton6 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -58,31 +64,62 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel1.setText("Opciones");
 
-        jButton1.setText("Bicoloreable");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Dijkstra");
-
-        jButton3.setText("Floyd");
-
-        jButton4.setText("Kruskal");
-
-        jButton5.setText("Prim");
-
         javax.swing.GroupLayout PanelCanvasLayout = new javax.swing.GroupLayout(PanelCanvas);
         PanelCanvas.setLayout(PanelCanvasLayout);
         PanelCanvasLayout.setHorizontalGroup(
             PanelCanvasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lienzo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(PanelCanvasLayout.createSequentialGroup()
+                .addComponent(lienzo1, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         PanelCanvasLayout.setVerticalGroup(
             PanelCanvasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lienzo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        Grafos.add(jToggleButton1);
+        jToggleButton1.setText("Bicoloreable");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+
+        Grafos.add(jToggleButton2);
+        jToggleButton2.setText("Dijkstra");
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
+
+        Grafos.add(jToggleButton3);
+        jToggleButton3.setText("Floyd");
+
+        Grafos.add(jToggleButton4);
+        jToggleButton4.setText("Kruskal");
+        jToggleButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton4ActionPerformed(evt);
+            }
+        });
+
+        Grafos.add(jToggleButton5);
+        jToggleButton5.setText("Prim");
+
+        jButton6.setText("Resultado");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Limpiar grafo");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -92,35 +129,47 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(PanelCanvas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                    .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jToggleButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jToggleButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jToggleButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jToggleButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(PanelCanvas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(57, 57, 57)))
+                .addGap(15, 15, 15))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel1)
+                .addGap(9, 9, 9)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(PanelCanvas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jToggleButton1)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(jToggleButton2)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3)
+                        .addComponent(jToggleButton3)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4)
+                        .addComponent(jToggleButton4)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton5)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(PanelCanvas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addComponent(jToggleButton5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton6)
+                        .addGap(55, 55, 55))))
         );
 
         jTabbedPane1.addTab("Grafos", jPanel3);
@@ -129,11 +178,11 @@ public class Principal extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 913, Short.MAX_VALUE)
+            .addGap(0, 994, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 420, Short.MAX_VALUE)
+            .addGap(0, 461, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Árboles", jPanel2);
@@ -152,7 +201,7 @@ public class Principal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1002, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -170,19 +219,88 @@ public class Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formMouseClicked
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        int opc = lienzo1.getOpcion();
+        switch (opc) {
+            case 1:
+                bicoloreable();
+                break;
+            case 4:
+                kruskal();
+                break;
+            default:
+                JOptionPane.showMessageDialog(this, "Seleccione una opción.");
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        lienzo1.setOpcion(1);
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ArrayList<Nodo2D> nodos2D=lienzo1.getNodos2D();
-        ArrayList<Arista2D> aristas2D=lienzo1.getAristas2D();
-        GrafoBicoloreable gr=new GrafoBicoloreable();
+        lienzo1.clear();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
+        lienzo1.setOpcion(4);
+    }//GEN-LAST:event_jToggleButton4ActionPerformed
+
+    public void kruskal() {
+        ArrayList<Nodo2D> nodos2D = lienzo1.getNodos2D();
+        ArrayList<Arista2D> aristas2D = lienzo1.getAristas2D();
+        GrafoKruskal gr = new GrafoKruskal();
+        for (int i = 0; i < nodos2D.size(); i++) {
+            gr.agregarNodo();
+            nodos2D.get(i).setColor(Color.YELLOW);
+        }
+        for (int i = 0; i < aristas2D.size(); i++) {
+            Arista2D a = aristas2D.get(i);
+            a.setColor(Color.DARK_GRAY);
+            gr.agregarArista(a.getNodo1().getPos(), a.getNodo2().getPos(), a.getPeso());
+        }
+        gr.arbolMinimo();
+        int total=0;
+        for (int i = 0; i < aristas2D.size(); i++) {
+            AristaKruskal a = (AristaKruskal) gr.getArista(i);
+            if (a.isRespuesta()) {
+                aristas2D.get(a.getPos()).setColor(Color.YELLOW);
+                total+=a.getPeso();
+            }
+        }
+        lienzo1.getGraphics().drawString("Total: "+total, 50, 50);
+        lienzo1.repaint();
+    }
+
+    public void bicoloreable() {
+        ArrayList<Nodo2D> nodos2D = lienzo1.getNodos2D();
+        ArrayList<Arista2D> aristas2D = lienzo1.getAristas2D();
+        GrafoBicoloreable gr = new GrafoBicoloreable();
         for (int i = 0; i < nodos2D.size(); i++) {
             gr.agregarNodo();
         }
         for (int i = 0; i < aristas2D.size(); i++) {
-            Arista2D a=aristas2D.get(i);
+            Arista2D a = aristas2D.get(i);
             gr.agregarArista(a.getNodo1().getPos(), a.getNodo2().getPos());
         }
-        System.out.println(gr.bicoloreable());
-    }//GEN-LAST:event_jButton1ActionPerformed
+        boolean bicoloreable = gr.bicoloreable();
+        for (int i = 0; i < gr.getNodos().size(); i++) {
+            if (gr.getNodos().get(i).getColor() == 1) {
+                nodos2D.get(i).setColor(Color.WHITE);
+            } else {
+                nodos2D.get(i).setColor(Color.YELLOW);
+            }
+        }
+        if (bicoloreable) {
+            JOptionPane.showMessageDialog(this, "¡Es bicoloreable :D!");
+        } else {
+            JOptionPane.showMessageDialog(this, "NO es bicoloreable :(");
+        }
+        lienzo1.repaint();
+    }
 
     /**
      * @param args the command line arguments
@@ -221,12 +339,10 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup Grafos;
     private javax.swing.JPanel PanelCanvas;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -234,6 +350,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JToggleButton jToggleButton4;
+    private javax.swing.JToggleButton jToggleButton5;
     private proyectoedd1.Lienzo lienzo1;
     // End of variables declaration//GEN-END:variables
     ArrayList<JRadioButton> radioBotones = new ArrayList();

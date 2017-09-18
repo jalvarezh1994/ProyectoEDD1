@@ -99,4 +99,12 @@ public class GrafoBicoloreable implements Grafo {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public ArrayList<NodoBicoloreable> getNodos() {
+        return nodos;
+    }
+
+    public void setNodos(ArrayList<NodoBicoloreable> nodos) {
+        this.nodos = nodos;
+    }
+
 }
