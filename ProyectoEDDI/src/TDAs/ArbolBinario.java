@@ -42,6 +42,20 @@ public class ArbolBinario {
 
     }
 
+    public static void main(String[] args) {
+        ArbolBinario arbol = new ArbolBinario(100);
+        String exp = "2*3+4/5";
+        ArrayList<String> expresion = arbol.convertirInfija_Postfija(exp);
+
+        arbol.crearArbolExpresiones(expresion);
+        System.out.println(expresion);
+        arbol.imprimirRecursivo(-1, 0);
+        arbol.postOrden(0);
+        arbol.imprimirRecursivo(-1, 0);
+        //arbol.imprimirRecursivo(0, 0);
+
+    }
+
     public ArbolBinario(int numElementos) {
         try {
             this.arbol = new NodoArbolBinario[numElementos];
@@ -193,9 +207,11 @@ public class ArbolBinario {
         for (int i = nodos.size() - 1; i >= 0; i--) {
 
             if (esOperador(nodos.get(i))) {
-                if (estaVacio()) {
+                if (this.estaVacio()) {
+                    //System.out.println(nodos.get(i));
                     pilaNodoArbolBinario.push(new NodoArbolBinario(nodos.get(i)));
                     this.agregarNodoArbolBinario((NodoArbolBinario) pilaNodoArbolBinario.top(), padre);
+
                 } else {
                     padre = ((NodoArbolBinario) pilaNodoArbolBinario.top()).getPos();
                     NodoArbolBinario n_nodo = new NodoArbolBinario(nodos.get(i));
@@ -207,16 +223,24 @@ public class ArbolBinario {
                 padre = ((NodoArbolBinario) pilaNodoArbolBinario.top()).getPos();
                 if (padre != NULL) {
                     this.agregarNodoArbolBinario(new NodoArbolBinario(nodos.get(i)), padre);
-               } else {
+                } else {
                     this.agregarNodoArbolBinario(new NodoArbolBinario(nodos.get(i)), raiz);
 
-               }
-                if (((NodoArbolBinario) pilaNodoArbolBinario.top()).getLeft() != NULL && ((NodoArbolBinario) pilaNodoArbolBinario.top()).getRight() != NULL) {
+                }
+                //System.out.println("Pop"+pilaNodoArbolBinario.top());
+
+                //System.out.println("Pop"+pilaNodoArbolBinario.top());
+                try{
+                while (((NodoArbolBinario) pilaNodoArbolBinario.top()).getLeft() != NULL && ((NodoArbolBinario) pilaNodoArbolBinario.top()).getRight() != NULL) {
                     pilaNodoArbolBinario.pop();
+                }
+                }catch(Exception e){
+                    System.out.println(e.getMessage());
                 }
 
             }
         }
+        imprimir();
     }
 
     public void imprimirRecursivo(int posicion, int nivel) {
@@ -248,6 +272,7 @@ public class ArbolBinario {
             postOrden(nodo.getRight());
             evaluar(nodo);
             travel.add(nodo.getElemento());
+            System.out.println(nodo);
         }
         return travel;
     }

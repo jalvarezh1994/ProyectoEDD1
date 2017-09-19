@@ -97,7 +97,7 @@ public class NodoArbolBinario {
 
     @Override
     public String toString() {
-        return elemento.toString();
+        return elemento.toString()+"Hijo Iz:"+this.getLeft()+"Hijo Der:"+this.getRight();
     }
 
 }
