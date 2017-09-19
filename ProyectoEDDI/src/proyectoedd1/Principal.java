@@ -7,10 +7,10 @@ package proyectoedd1;
 
 import TDAs.ArbolBinario;
 import E4Bicoloreable.GrafoBicoloreable;
-
+import E5Floyd.GrafoFloyd;
 import E7Kruskal.AristaKruskal;
 import E7Kruskal.GrafoKruskal;
-
+import E8Prim.GrafoPrim;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -98,6 +98,11 @@ public class Principal extends javax.swing.JFrame {
 
         Grafos.add(jToggleButton3);
         jToggleButton3.setText("Floyd");
+        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton3ActionPerformed(evt);
+            }
+        });
 
         Grafos.add(jToggleButton4);
         jToggleButton4.setText("Kruskal");
@@ -109,6 +114,11 @@ public class Principal extends javax.swing.JFrame {
 
         Grafos.add(jToggleButton5);
         jToggleButton5.setText("Prim");
+        jToggleButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("Resultado");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -204,7 +214,7 @@ public class Principal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1002, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -231,6 +241,9 @@ public class Principal extends javax.swing.JFrame {
             case 4:
                 kruskal();
                 break;
+            case 5:
+                prim();
+                break;
             default:
                 JOptionPane.showMessageDialog(this, "Seleccione una opción.");
         }
@@ -252,6 +265,63 @@ public class Principal extends javax.swing.JFrame {
         lienzo1.setOpcion(4);
     }//GEN-LAST:event_jToggleButton4ActionPerformed
 
+    private void jToggleButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton5ActionPerformed
+        lienzo1.setOpcion(5);
+    }//GEN-LAST:event_jToggleButton5ActionPerformed
+
+    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+        lienzo1.setOpcion(3);
+    }//GEN-LAST:event_jToggleButton3ActionPerformed
+
+    public final int INF = (int) Double.POSITIVE_INFINITY;
+
+    public void floyd() {
+        ArrayList<Nodo2D> nodos2D = lienzo1.getNodos2D();
+        ArrayList<Arista2D> aristas2D = lienzo1.getAristas2D();
+        GrafoFloyd gr = new GrafoFloyd(lienzo1.getTamanoAdyacencia());
+        for (int i = 0; i < nodos2D.size(); i++) {
+            gr.agregarNodo();
+        }
+        int[][] m = lienzo1.getAdyacencia();
+        for (int i = 0; i < m.length; i++) {
+            for (int j = 0; j < m.length; j++) {
+                if (m[i][j] != INF) {
+                    gr.agregarArista(i, j, m[i][j]);
+                }
+            }
+        }
+        gr.floyd();
+    }
+
+    public void prim() {
+        ArrayList<Nodo2D> nodos2D = lienzo1.getNodos2D();
+        ArrayList<Arista2D> aristas2D = lienzo1.getAristas2D();
+        GrafoPrim gr = new GrafoPrim(lienzo1.getTamanoAdyacencia());
+        gr.setAdyacencia(lienzo1.getAdyacencia());
+        gr.setSize(lienzo1.getAdyacenciaSize());
+        gr.prim();
+        for (int i = 0; i < nodos2D.size(); i++) {
+            nodos2D.get(i).setColor(Color.YELLOW);
+        }
+        int[] salida = gr.getSalida();
+        for (int i = 0; i < aristas2D.size(); i++) {
+            Arista2D a = aristas2D.get(i);
+            for (int j = 0; j < nodos2D.size(); j++) {
+                if (a.contieneNodo(j) && a.contieneNodo(salida[j])) {
+                    a.setColor(Color.YELLOW);
+                }
+            }
+        }
+        int peso = 0;
+        for (int i = 0; i < aristas2D.size(); i++) {
+            if (aristas2D.get(i).getColor().equals(Color.YELLOW)) {
+                peso += aristas2D.get(i).getPeso();
+            }
+        }
+        lienzo1.repaint();
+        JOptionPane.showMessageDialog(this, "Total: " + peso);
+    }
+
     public void kruskal() {
         ArrayList<Nodo2D> nodos2D = lienzo1.getNodos2D();
         ArrayList<Arista2D> aristas2D = lienzo1.getAristas2D();
@@ -262,7 +332,7 @@ public class Principal extends javax.swing.JFrame {
         }
         for (int i = 0; i < aristas2D.size(); i++) {
             Arista2D a = aristas2D.get(i);
-            a.setColor(Color.DARK_GRAY);
+            a.setColor(Color.BLACK);
             gr.agregarArista(a.getNodo1().getPos(), a.getNodo2().getPos(), a.getPeso());
         }
         gr.arbolMinimo();
@@ -274,8 +344,8 @@ public class Principal extends javax.swing.JFrame {
                 total += a.getPeso();
             }
         }
-        lienzo1.getGraphics().drawString("Total: " + total, 50, 50);
         lienzo1.repaint();
+        JOptionPane.showMessageDialog(this, "Total: " + total);
     }
 
     public void bicoloreable() {
@@ -297,12 +367,12 @@ public class Principal extends javax.swing.JFrame {
                 nodos2D.get(i).setColor(Color.YELLOW);
             }
         }
+        lienzo1.repaint();
         if (bicoloreable) {
             JOptionPane.showMessageDialog(this, "¡Es bicoloreable :D!");
         } else {
             JOptionPane.showMessageDialog(this, "NO es bicoloreable :(");
         }
-        lienzo1.repaint();
     }
 
     /**
@@ -360,5 +430,4 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton5;
     private proyectoedd1.Lienzo lienzo1;
     // End of variables declaration//GEN-END:variables
-    ArrayList<JRadioButton> radioBotones = new ArrayList();
 }

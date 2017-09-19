@@ -91,6 +91,14 @@ public class Arista2D {
         this.peso = peso;
     }
 
+    public boolean contieneNodo(int n) {
+        if (nodo1.getPos() == n || nodo2.getPos() == n) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     @Override
     public String toString() {
         return "[" + nodo1.getPos() + "," + nodo2.getPos() + ":" + peso + "]";

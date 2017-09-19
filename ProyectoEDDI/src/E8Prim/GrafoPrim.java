@@ -13,6 +13,9 @@ import TDAs.GrafoDirigidoMatriz;
  */
 public class GrafoPrim extends GrafoDirigidoMatriz {
 
+    private int peso[];
+    private int salida[];
+
     public GrafoPrim(int nodosMaximos) {
         super(nodosMaximos);
     }
@@ -54,17 +57,51 @@ public class GrafoPrim extends GrafoDirigidoMatriz {
             }
             contador++;
         } while (contador < size);
-        for (int i = 0; i < size; i++) {
-            System.out.print("" + peso[i] + "\t");
-        }
-        System.out.println("");
-        for (int i = 0; i < size; i++) {
-            System.out.print("" + i + "\t");
-        }
-        System.out.println("");
-        for (int i = 0; i < size; i++) {
-            System.out.print("" + salida[i] + "\t");
-        }
+        this.peso = peso;
+        this.salida = salida;
+//        for (int i = 0; i < size; i++) {
+//            System.out.print("" + peso[i] + "\t");
+//        }
+//        System.out.println("");
+//        for (int i = 0; i < size; i++) {
+//            System.out.print("" + i + "\t");
+//        }
+//        System.out.println("");
+//        for (int i = 0; i < size; i++) {
+//            System.out.print("" + salida[i] + "\t");
+//        }
+    }
+
+    public int[] getPeso() {
+        return peso;
+    }
+
+    public void setPeso(int[] peso) {
+        this.peso = peso;
+    }
+
+    public int[] getSalida() {
+        return salida;
+    }
+
+    public void setSalida(int[] salida) {
+        this.salida = salida;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public void setAdyacencia(int[][] adyacencia) {
+        this.adyacencia = adyacencia;
+    }
+
+    public int[][] getAdyacencia() {
+        return adyacencia;
     }
 
 }

@@ -86,6 +86,9 @@ public class GrafoKruskal extends GrafoLista {
                 ((AristaKruskal) aristas.get(i)).setRespuesta(true);
             }
         }
+        for (int i = 0; i < aristas.size(); i++) {
+            System.out.println(aristas.get(i));
+        }
     }
 
 }

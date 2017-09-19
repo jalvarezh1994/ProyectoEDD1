@@ -82,9 +82,9 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
                 bicoloreable(e);
                 break;
             case 4:
-                for (int i = 0; i < aristas2D.size(); i++) {
-                    aristas2D.get(i).setColor(Color.BLACK);
-                }
+                kruskal(e);
+                break;
+            case 5:
                 kruskal(e);
                 break;
             default:
@@ -132,6 +132,7 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
             if (e.isMetaDown()) {
                 nodos2D.add(new Nodo2D(e.getX() - 15, e.getY() - 15,
                         Color.BLACK, nodos2D.size()));
+                size++;
             }
         }
         repaint();
@@ -217,6 +218,8 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
             for (int i = seleccion; i < nodos2D.size(); i++) {
                 nodos2D.get(i).setPos(i);
             }
+            eliminarNodoMatriz(adyacencia, seleccion);
+            size--;
             seleccion = -1;
             repaint();
         }
@@ -288,7 +291,48 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
                 adyacencia[i][j] = INF;
             }
         }
+        size = 0;
         this.repaint();
     }
 
+    public int getTamanoAdyacencia() {
+        return tamanoAdyacencia;
+    }
+
+    public void setTamanoAdyacencia(int tamanoAdyacencia) {
+        this.tamanoAdyacencia = tamanoAdyacencia;
+    }
+
+    public int[][] getAdyacencia() {
+        return adyacencia;
+    }
+
+    public void setAdyacencia(int[][] adyacencia) {
+        this.adyacencia = adyacencia;
+    }
+
+    public int getAdyacenciaSize() {
+        return size;
+    }
+
+    public void setAdyacenciaSize(int size) {
+        this.size = size;
+    }
+
+    public void eliminarNodoMatriz(int[][] m, int n) {
+        for (int i = 0; i < m.length; i++) {
+            for (int j = 0; j < m[i].length; j++) {
+                try {
+                    if (i > n && j > n) {
+                        m[i][j] = m[i + 1][j + 1];
+                    } else if (i > n) {
+                        m[i][j] = m[i + 1][j];
+                    } else if (j > n) {
+                        m[i][j] = m[i][j + 1];
+                    }
+                } catch (Exception e) {
+                }
+            }
+        }
+    }
 }
