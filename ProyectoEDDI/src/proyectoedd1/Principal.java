@@ -13,7 +13,9 @@ import E7Kruskal.GrafoKruskal;
 import E8Prim.GrafoPrim;
 import java.awt.Canvas;
 import java.awt.Color;
+import java.awt.Rectangle;
 import java.util.ArrayList;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 
@@ -41,6 +43,7 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         Grafos = new javax.swing.ButtonGroup();
+        Advertencia = new javax.swing.JDialog();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -54,9 +57,18 @@ public class Principal extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        jTextExpresion = new javax.swing.JTextField();
+        jTextResultado = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+
+        Advertencia.setTitle("DEBE ESCRIBIR UNA EXPRESION");
+        Advertencia.setIconImage(null);
+        Advertencia.setType(java.awt.Window.Type.POPUP);
+        Advertencia.getContentPane().setLayout(new javax.swing.BoxLayout(Advertencia.getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
+        Advertencia.getAccessibleContext().setAccessibleDescription("El campo no debe estar vacio");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -187,15 +199,41 @@ public class Principal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Grafos", jPanel3);
 
+        jButton2.setFont(new java.awt.Font("Felix Titling", 0, 14)); // NOI18N
+        jButton2.setText("Calcular Expresiones");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jTextExpresion.setFont(new java.awt.Font("Felix Titling", 0, 12)); // NOI18N
+
+        jTextResultado.setEditable(false);
+        jTextResultado.setFont(new java.awt.Font("Felix Titling", 1, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 994, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextExpresion)
+                    .addComponent(jTextResultado))
+                .addContainerGap(759, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 461, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTextExpresion, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(340, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Árboles", jPanel2);
@@ -219,10 +257,7 @@ public class Principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane1)
-                .addContainerGap())
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -272,6 +307,22 @@ public class Principal extends javax.swing.JFrame {
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
         lienzo1.setOpcion(3);
     }//GEN-LAST:event_jToggleButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ArbolBinario arbol = new ArbolBinario(100);
+        if(jTextExpresion.getText().equals("")){
+            
+            Advertencia.setLocation(this.getHeight()/2, this.getWidth()/2);
+            Advertencia.setBounds(new Rectangle(300, 75));
+            Advertencia.setVisible(true);
+        }else{
+           arbol.crearArbolExpresiones(arbol.convertirInfija_Postfija(jTextExpresion.getText()));
+           arbol.postOrden(0);
+           jTextResultado.setText(arbol.nodoRaiz().getElemento().toString());
+           jTextExpresion.setText("");
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     public final int INF = (int) Double.POSITIVE_INFINITY;
 
@@ -412,9 +463,11 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog Advertencia;
     private javax.swing.ButtonGroup Grafos;
     private javax.swing.JPanel PanelCanvas;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
@@ -423,6 +476,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField jTextExpresion;
+    private javax.swing.JTextField jTextResultado;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
