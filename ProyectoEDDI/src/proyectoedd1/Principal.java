@@ -8,6 +8,8 @@ package proyectoedd1;
 import TDAs.ArbolBinario;
 import E4Bicoloreable.GrafoBicoloreable;
 import E5Floyd.GrafoFloyd;
+import E6Dijkstra.GrafoDijkstra;
+import E6Dijkstra.Vertice;
 import E7Kruskal.AristaKruskal;
 import E7Kruskal.GrafoKruskal;
 import E8Prim.GrafoPrim;
@@ -37,7 +39,6 @@ public class Principal extends javax.swing.JFrame {
      * Creates new form principal
      */
     public Principal() {
-
         initComponents();
         lienzo1.setBounds(PanelCanvas.getX() - 100, PanelCanvas.getY() - 100, PanelCanvas.getWidth(), PanelCanvas.getHeight());
         lienzo1.setBackground(Color.lightGray);
@@ -56,6 +57,10 @@ public class Principal extends javax.swing.JFrame {
 
         Grafos = new javax.swing.ButtonGroup();
         Advertencia = new javax.swing.JDialog();
+        jDialog1 = new javax.swing.JDialog();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        matrizFloyd = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -88,6 +93,33 @@ public class Principal extends javax.swing.JFrame {
         Advertencia.setType(java.awt.Window.Type.POPUP);
         Advertencia.getContentPane().setLayout(new javax.swing.BoxLayout(Advertencia.getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
         Advertencia.getAccessibleContext().setAccessibleDescription("El campo no debe estar vacio");
+
+        matrizFloyd.setColumns(20);
+        matrizFloyd.setRows(5);
+        jScrollPane2.setViewportView(matrizFloyd);
+
+        jLabel3.setText("Resultado");
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(49, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -469,18 +501,33 @@ public class Principal extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         floydArchivo();
         lienzo1.setOpcion(3);
-        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         primArchivo();
-        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     public final int INF = (int) Double.POSITIVE_INFINITY;
 
     public void dijkstra() {
-
+        ArrayList<Nodo2D> nodos2D = lienzo1.getNodos2D();
+        ArrayList<Arista2D> aristas2D = lienzo1.getAristas2D();
+        GrafoDijkstra gr = new GrafoDijkstra(lienzo1.getTotalAdyacencia());
+        for (int i = 0; i < lienzo1.getNodos2D().size(); i++) {
+            gr.agregarNodo();
+        }
+        for (int i = 0; i < lienzo1.getAdyacenciaSize(); i++) {
+            for (int j = 0; j < lienzo1.getAdyacenciaSize(); j++) {
+                gr.agregarArista(i, j, lienzo1.getAdyacencia()[i][j]);
+            }
+        }
+        Vertice[] vertices;
+        vertices = gr.dijkstra(lienzo1.getSeleccion());
+        for (int i = 0; i < vertices.length; i++) {
+            nodos2D.get(i).setTexto("[" + vertices[i].getPesoAcumulado() + ","
+                    + vertices[i].getProcedencia() + "]");
+        }
+        lienzo1.repaint();
     }
 
     public void floyd() {
@@ -498,7 +545,9 @@ public class Principal extends javax.swing.JFrame {
                 }
             }
         }
-        gr.floyd();
+        jDialog1.setVisible(true);
+        jDialog1.pack();
+        matrizFloyd.setText(gr.floyd());
     }
 
     public void floydArchivo() {
@@ -712,8 +761,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton6;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -723,6 +774,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextExpresion;
@@ -734,5 +786,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton5;
     private javax.swing.JToggleButton jToggleButton7;
     private javax.swing.JToggleButton jToggleButton8;
+    private javax.swing.JTextArea matrizFloyd;
     // End of variables declaration//GEN-END:variables
 }

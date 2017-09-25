@@ -17,6 +17,7 @@ public class Nodo2D {
     private Color color;
     private boolean pressed;
     private int pos;
+    private String texto="";
 
     public Nodo2D(int x, int y, Color color, int pos) {
         this.x = x;
@@ -26,6 +27,14 @@ public class Nodo2D {
     }
 
     Nodo2D() {
+    }
+
+    public String getTexto() {
+        return texto;
+    }
+
+    public void setTexto(String texto) {
+        this.texto = texto;
     }
 
     public int getX() {
