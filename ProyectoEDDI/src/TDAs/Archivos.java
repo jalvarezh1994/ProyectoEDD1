@@ -219,7 +219,7 @@ public class Archivos {
                 token = new StringTokenizer(linea, ",");
                 while (token.hasMoreTokens()) {
                     String aux = token.nextToken();
-                    if (aux.equals("inf")) {
+                    if (aux.equals("inf") || aux.equals("inf ")) {
                         matriz[contFila][contColumna] = INF;
                     } else {
                         matriz[contFila][contColumna] = Integer.parseInt(aux);

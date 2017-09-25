@@ -18,6 +18,25 @@ public class GrafoDirigidoMatriz implements Grafo {
     protected int nodosMaximos;
     protected int INF = (int) Double.POSITIVE_INFINITY;
 
+    public int[][] getAdyacencia() {
+        return adyacencia;
+    }
+
+    public void setAdyacencia(int[][] adyacencia) {
+        this.adyacencia = adyacencia;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+    
+    
+
+    
     public GrafoDirigidoMatriz(int nodosMaximos) {
         this.nodosMaximos = nodosMaximos;
         adyacencia = new int[nodosMaximos][nodosMaximos];
