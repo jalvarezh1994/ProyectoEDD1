@@ -17,7 +17,7 @@ public class GrafoFloyd extends GrafoDirigidoMatriz {
         super(nodosMaximos);
     }
 
-    public void floyd() {
+    public String floyd() {
         int[][] temporal = new int[size][size];
         temporal = adyacencia;
         for (int k = 0; k < size; k++) {
@@ -30,22 +30,34 @@ public class GrafoFloyd extends GrafoDirigidoMatriz {
                 }
             }
         }
+        for (int i = 0; i < size; i++) {
+            temporal[i][i] = INF;
+        }
+        String texto = "";
         System.out.println("");
         System.out.print("\t");
+        texto += "\t";
         for (int i = 0; i < this.size; i++) {
             System.out.print("" + i + "\t");
+            texto += "" + i + "\t";
         }
         System.out.println("");
+        texto += "\n";
         for (int i = 0; i < this.size; i++) {
             System.out.print("" + i + "\t");
+            texto += "" + i + "\t";
             for (int j = 0; j < this.size; j++) {
                 if (temporal[i][j] == INF) {
                     System.out.print("Inf\t");
+                    texto += "Inf\t";
                 } else {
                     System.out.print(temporal[i][j] + "\t");
+                    texto += temporal[i][j] + "\t";
                 }
             }
             System.out.println("");
+            texto += "\n";
         }
+        return texto;
     }
 }
