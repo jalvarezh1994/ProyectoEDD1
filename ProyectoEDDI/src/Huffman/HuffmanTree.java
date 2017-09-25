@@ -9,7 +9,7 @@ package Huffman;
  *
  * @author Ilich (D'R)
  */
-abstract class HuffmanTree implements Comparable<HuffmanTree> {
+public abstract class HuffmanTree implements Comparable<HuffmanTree> {
 
     public int frequency;
 
