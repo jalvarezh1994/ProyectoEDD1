@@ -6,6 +6,7 @@
 package E6Dijkstra;
 
 import TDAs.GrafoDirigidoMatriz;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,7 +20,7 @@ public class GrafoDijkstra extends GrafoDirigidoMatriz {
         super(nodosMaximos);
     }
 
-    public boolean dijkstra(int vertice) {
+    public Vertice[] dijkstra(int vertice) {
         if (vertice >= 0 && vertice < size) {
             boolean[] seleccionado = new boolean[size];
             Vertice[] solucion = new Vertice[size];
@@ -61,11 +62,12 @@ public class GrafoDijkstra extends GrafoDirigidoMatriz {
                 }
             } while (salir == false);
             for (int i = 0; i < size; i++) {
-                System.out.println("" + i + " " + solucion[i] + "\t");
+                //System.out.println("" + i + " " + solucion[i] + "\t");
             }
-            return true;
+            return solucion;
         } else {
-            return false;
+            JOptionPane.showMessageDialog(null, "No es un nodo válido.");
+            return null;
         }
     }
 }

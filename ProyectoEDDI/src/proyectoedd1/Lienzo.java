@@ -65,8 +65,18 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
                     + a.getNodo2().getX() + 20));
             double posTextoY = (0.50) * ((double) (a.getNodo1().getY()
                     + a.getNodo2().getY() + 20));
+
             g2.setColor(Color.BLUE);
-            g2.drawString(a.getTexto(), (int) posTextoX, (int) posTextoY);
+            if (opcion == 2 || opcion == 3) {
+                String dirigido = "";
+                dirigido += a.getNodo1().getPos() + "," + a.getNodo2().getPos() + ":"
+                        + adyacencia[a.getNodo1().getPos()][a.getNodo2().getPos()] + "::"
+                        + a.getNodo2().getPos() + "," + a.getNodo1().getPos() + ":"
+                        + adyacencia[a.getNodo2().getPos()][a.getNodo1().getPos()];
+                g2.drawString(dirigido, (int) posTextoX, (int) posTextoY);
+            } else {
+                g2.drawString(a.getTexto(), (int) posTextoX, (int) posTextoY);
+            }
         }
 
         for (int i = 0; i < nodos2D.size(); i++) {
@@ -75,6 +85,7 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
             g.fillOval(n.getX(), n.getY(), tamanoNodo, tamanoNodo);
             g.setColor(Color.blue);
             g.drawString(Integer.toString(i), n.getX() + 11, n.getY() + 19);
+            g.drawString(n.getTexto(), n.getX(), n.getY());
         }
 
     }
@@ -100,6 +111,10 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
                 dijkstra(e);
                 break;
             case 3:
+                for (int i = 0; i < aristas2D.size(); i++) {
+                    aristas2D.get(i).setColor(Color.BLACK);
+                }
+                dijkstra(e);
                 break;
             case 4:
                 for (int i = 0; i < aristas2D.size(); i++) {
@@ -119,7 +134,63 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
     }
 
     private void dijkstra(MouseEvent e) {
-
+        boolean presionado = false;
+        for (int i = 0; i < nodos2D.size(); i++) {
+            Nodo2D n = nodos2D.get(i);
+            Nodo2D n2 = null;
+            if (seleccion != -1) {
+                n2 = nodos2D.get(seleccion);
+            }
+            if (n.isPressed(e.getX(), e.getY(), tamanoNodo)) {
+                presionado = true;
+                arrastrar = true;
+                try {
+                    if (presionado && e.isControlDown() && seleccion != i && seleccion != -1
+                            && adyacencia[n2.getPos()][n.getPos()]
+                            == INF && adyacencia[n.getPos()][n2.getPos()] == INF) {
+                        boolean error;
+                        int pesoEntero = 0;
+                        int pesoEntero2 = 0;
+                        do {
+                            error = false;
+                            String peso = JOptionPane.showInputDialog(
+                                    "Ingrese el peso de " + n2.getPos() + " a " + n.getPos());
+                            try {
+                                pesoEntero = Integer.parseInt(peso);
+                            } catch (Exception ex) {
+                                JOptionPane.showMessageDialog(this, "No es un número válido");
+                                error = true;
+                            }
+                        } while (error);
+                        do {
+                            error = false;
+                            String peso = JOptionPane.showInputDialog(
+                                    "Ingrese el peso de " + n.getPos() + " a " + n2.getPos());
+                            try {
+                                pesoEntero2 = Integer.parseInt(peso);
+                            } catch (Exception ex) {
+                                JOptionPane.showMessageDialog(this, "No es un número válido");
+                                error = true;
+                            }
+                        } while (error);
+                        aristas2D.add(new Arista2D(n2, n, Color.black, pesoEntero));
+                        adyacencia[n2.getPos()][n.getPos()] = pesoEntero;
+                        adyacencia[n.getPos()][n2.getPos()] = pesoEntero2;
+                    }
+                } catch (Exception ex) {
+                }
+                seleccion = i;
+            }
+        }
+        if (!presionado) {
+            seleccion = -1;
+            if (e.isMetaDown()) {
+                nodos2D.add(new Nodo2D(e.getX() - 15, e.getY() - 15,
+                        Color.BLACK, nodos2D.size()));
+                size++;
+            }
+        }
+        repaint();
     }
 
     private void kruskal(MouseEvent e) {
