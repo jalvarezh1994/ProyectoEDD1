@@ -16,10 +16,11 @@ public class AristaKruskal extends Arista {
     private int grupo = (int) Double.POSITIVE_INFINITY;
     private boolean respuesta;
     private int pos;
-
+    
+    
     public AristaKruskal() {
     }
-
+    
     public AristaKruskal(int nodo1, int nodo2) {
         super(nodo1, nodo2);
     }
@@ -56,7 +57,7 @@ public class AristaKruskal extends Arista {
     public void setPos(int pos) {
         this.pos = pos;
     }
-
+    
     @Override
     public String toString() {
         return super.toString() + " AristaKruskal{" + "grupo=" + grupo + ", respuesta=" + respuesta + '}';

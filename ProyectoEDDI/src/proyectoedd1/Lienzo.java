@@ -69,10 +69,19 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
             g2.setColor(Color.BLUE);
             if (opcion == 2 || opcion == 3) {
                 String dirigido = "";
-                dirigido += a.getNodo1().getPos() + "," + a.getNodo2().getPos() + ":"
-                        + adyacencia[a.getNodo1().getPos()][a.getNodo2().getPos()] + "::"
-                        + a.getNodo2().getPos() + "," + a.getNodo1().getPos() + ":"
-                        + adyacencia[a.getNodo2().getPos()][a.getNodo1().getPos()];
+                dirigido += a.getNodo1().getPos() + "," + a.getNodo2().getPos() + ":";
+                if (adyacencia[a.getNodo1().getPos()][a.getNodo2().getPos()] == INF) {
+                    dirigido += "Inf";
+                } else {
+                    dirigido += adyacencia[a.getNodo1().getPos()][a.getNodo2().getPos()];
+                }
+                dirigido += "::"
+                        + a.getNodo2().getPos() + "," + a.getNodo1().getPos() + ":";
+                if (adyacencia[a.getNodo2().getPos()][a.getNodo1().getPos()] == INF) {
+                    dirigido += "Inf";
+                } else {
+                    dirigido += adyacencia[a.getNodo2().getPos()][a.getNodo1().getPos()];
+                }
                 g2.drawString(dirigido, (int) posTextoX, (int) posTextoY);
             } else {
                 g2.drawString(a.getTexto(), (int) posTextoX, (int) posTextoY);
@@ -149,28 +158,37 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
                             && adyacencia[n2.getPos()][n.getPos()]
                             == INF && adyacencia[n.getPos()][n2.getPos()] == INF) {
                         boolean error;
-                        int pesoEntero = 0;
-                        int pesoEntero2 = 0;
+                        int pesoEntero = INF;
+                        int pesoEntero2 = INF;
                         do {
                             error = false;
                             String peso = JOptionPane.showInputDialog(
-                                    "Ingrese el peso de " + n2.getPos() + " a " + n.getPos());
+                                    "Ingrese el peso de " + n2.getPos() + " a "
+                                    + n.getPos() + " o 'i' si no hay camino");
+
                             try {
                                 pesoEntero = Integer.parseInt(peso);
                             } catch (Exception ex) {
-                                JOptionPane.showMessageDialog(this, "No es un número válido");
-                                error = true;
+                                if (peso.charAt(0) == 'i') {
+                                } else {
+                                    JOptionPane.showMessageDialog(this, "No es un número válido");
+                                    error = true;
+                                }
                             }
                         } while (error);
                         do {
                             error = false;
                             String peso = JOptionPane.showInputDialog(
-                                    "Ingrese el peso de " + n.getPos() + " a " + n2.getPos());
+                                    "Ingrese el peso de " + n.getPos() + " a "
+                                    + n2.getPos() + " o 'i' si no hay camino");
                             try {
                                 pesoEntero2 = Integer.parseInt(peso);
                             } catch (Exception ex) {
-                                JOptionPane.showMessageDialog(this, "No es un número válido");
-                                error = true;
+                                if (peso.charAt(0) == 'i') {
+                                } else {
+                                    JOptionPane.showMessageDialog(this, "No es un número válido");
+                                    error = true;
+                                }
                             }
                         } while (error);
                         aristas2D.add(new Arista2D(n2, n, Color.black, pesoEntero));

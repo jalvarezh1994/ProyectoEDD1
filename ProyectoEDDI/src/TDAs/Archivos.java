@@ -240,13 +240,13 @@ public class Archivos {
             } catch (Exception e2) {
                 e2.printStackTrace();
             }
-            for (int i = 0; i < cantNodos; i++) {
-                for (int j = 0; j < cantNodos; j++) {
-                    System.out.print("[" + matriz[i][j] + "]");
-                }
-                System.out.println("");
-
-            }
+//            for (int i = 0; i < cantNodos; i++) {
+//                for (int j = 0; j < cantNodos; j++) {
+//                    System.out.print("[" + matriz[i][j] + "]");
+//                }
+//                System.out.println("");
+//
+//            }
         }
         return matriz;
     }

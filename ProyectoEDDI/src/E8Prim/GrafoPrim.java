@@ -59,17 +59,17 @@ public class GrafoPrim extends GrafoDirigidoMatriz {
         } while (contador < size);
         this.peso = peso;
         this.salida = salida;
-//        for (int i = 0; i < size; i++) {
-//            System.out.print("" + peso[i] + "\t");
-//        }
-//        System.out.println("");
-//        for (int i = 0; i < size; i++) {
-//            System.out.print("" + i + "\t");
-//        }
-//        System.out.println("");
-//        for (int i = 0; i < size; i++) {
-//            System.out.print("" + salida[i] + "\t");
-//        }
+        for (int i = 0; i < size; i++) {
+            System.out.print("" + peso[i] + "\t");
+        }
+        System.out.println("");
+        for (int i = 0; i < size; i++) {
+            System.out.print("" + i + "\t");
+        }
+        System.out.println("");
+        for (int i = 0; i < size; i++) {
+            System.out.print("" + salida[i] + "\t");
+        }
     }
 
     public int[] getPeso() {

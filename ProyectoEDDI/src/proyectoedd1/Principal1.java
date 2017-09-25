@@ -15,19 +15,16 @@ import E8Prim.GrafoPrim;
 import TDAs.Archivos;
 import java.awt.Canvas;
 import java.awt.Color;
-import java.awt.Event;
 import java.awt.Rectangle;
-import java.awt.event.MouseEvent;
 import java.io.File;
 import java.util.ArrayList;
-import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JFileChooser;
 
-public class Principal extends javax.swing.JFrame {
-    JButton botonKruskal;
+public class Principal1 extends javax.swing.JFrame {
+    
     Archivos archivo1;
     Lienzo lienzo1 = new Lienzo();
     HuffmanManagement huffmanManagement = new HuffmanManagement("./Árbol.hm");
@@ -36,21 +33,14 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form principal
      */
-    public Principal() {
+    public Principal1() {
         initComponents();
         lienzo1.setBounds(PanelCanvas.getX() - 100, PanelCanvas.getY() - 100, PanelCanvas.getWidth(), PanelCanvas.getHeight());
         lienzo1.setBackground(Color.lightGray);
         lienzo1.setVisible(true);
         PanelCanvas.add(lienzo1);
-        botonKruskal = new JButton();
-        botonKruskal.setBounds(100, 20, 50, 25);
-        botonKruskal.setText("Kruskal");
-        botonKruskal.setVisible(true);
-        //jPanel1.add(botonKruskal);
     }
 
-     
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -533,7 +523,6 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
 
     }//GEN-LAST:event_formMouseClicked
@@ -615,11 +604,7 @@ public class Principal extends javax.swing.JFrame {
                 bicoloreable();
                 break;
             case 2:
-                try {
-                    dijkstra();
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(this, "Seleccione un nodo");
-                }
+                dijkstra();
                 break;
             case 3:
                 floyd();
@@ -1093,21 +1078,23 @@ public class Principal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Principal1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Principal1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Principal1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Principal1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Principal().setVisible(true);
+                new Principal1().setVisible(true);
             }
         });
     }

@@ -74,8 +74,8 @@ public class GrafoKruskal extends GrafoLista {
             } else if (n1.getGrupo() > n2.getGrupo()) {
                 for (int j = 0; j < grupos.size(); j++) {
                     try {
-                        if (grupos.get(i) == n1.getGrupo()) {
-                            grupos.set(i, n2.getGrupo());
+                        if (grupos.get(j) == n1.getGrupo()) {
+                            grupos.set(j, n2.getGrupo());
                             a.setGrupo(n2.getGrupo());
                         }
                     } catch (Exception e) {
@@ -84,8 +84,8 @@ public class GrafoKruskal extends GrafoLista {
             } else if (n1.getGrupo() < n2.getGrupo()) {
                 for (int j = 0; j < grupos.size(); j++) {
                     try {
-                        if (grupos.get(i) == n2.getGrupo()) {
-                            grupos.set(i, n1.getGrupo());
+                        if (grupos.get(j) == n2.getGrupo()) {
+                            grupos.set(j, n1.getGrupo());
                             a.setGrupo(n1.getGrupo());
                         }
                     } catch (Exception e) {
@@ -103,6 +103,17 @@ public class GrafoKruskal extends GrafoLista {
             }
             //System.out.println(a);
         }
+        int total = 0;
+        for (int i = 0; i < aristas.size(); i++) {
+            AristaKruskal a = (AristaKruskal) aristas.get(i);
+            System.out.print(a);
+            if(a.isRespuesta()){
+                total+=a.getPeso();
+            }
+//System.out.println(a.isRespuesta());
+        }
+        System.out.println("MENOR PESO DE RECORRIDO:"+total);
+       
     }
 //    public void ordenarAristas() {
 //        int contador = 0;

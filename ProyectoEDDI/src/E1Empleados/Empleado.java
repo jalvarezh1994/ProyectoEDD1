@@ -53,7 +53,7 @@ public class Empleado {
 
     @Override
     public String toString() {
-        return "Empleado{" + "nombre=" + nombre + ", puntaje=" + puntaje + '}';
+        return nombre +":" + puntaje;
     }
 
 }
