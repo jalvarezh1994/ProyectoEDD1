@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyectoedd1;
 
 import TDAs.ArbolBinario;
@@ -23,12 +18,9 @@ import javax.swing.JRadioButton;
 import Huffman.HuffmanTree;
 import Huffman.Huffman;
 import Huffman.HuffmanTree;
+import Huffman.HuffmanManagement;
 import javax.swing.JFileChooser;
 
-/**
- *
- * @author jorge
- */
 public class Principal extends javax.swing.JFrame {
 
     Lienzo lienzo1 = new Lienzo();
@@ -67,6 +59,7 @@ public class Principal extends javax.swing.JFrame {
         jToggleButton5 = new javax.swing.JToggleButton();
         jButton6 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jToggleButton6 = new javax.swing.JToggleButton();
         jPanel2 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jTextExpresion = new javax.swing.JTextField();
@@ -77,6 +70,7 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jToggleButton8 = new javax.swing.JToggleButton();
+        jToggleButton9 = new javax.swing.JToggleButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -102,7 +96,7 @@ public class Principal extends javax.swing.JFrame {
         PanelCanvas.setLayout(PanelCanvasLayout);
         PanelCanvasLayout.setHorizontalGroup(
             PanelCanvasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 853, Short.MAX_VALUE)
+            .addGap(0, 845, Short.MAX_VALUE)
         );
         PanelCanvasLayout.setVerticalGroup(
             PanelCanvasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,20 +157,30 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        Grafos.add(jToggleButton6);
+        jToggleButton6.setText("Instrucciones");
+        jToggleButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1)
-                    .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jToggleButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jToggleButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jToggleButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jToggleButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel1)
+                        .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jToggleButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jToggleButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jToggleButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jToggleButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jToggleButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
@@ -209,6 +213,8 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(jToggleButton4)
                         .addGap(18, 18, 18)
                         .addComponent(jToggleButton5)
+                        .addGap(18, 18, 18)
+                        .addComponent(jToggleButton6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton6)
                         .addGap(55, 55, 55))))
@@ -275,6 +281,13 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jToggleButton9.setText("Leer");
+        jToggleButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jToggleButton9MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -286,7 +299,8 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jToggleButton7)
-                            .addComponent(jToggleButton8))
+                            .addComponent(jToggleButton8)
+                            .addComponent(jToggleButton9))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 837, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(32, Short.MAX_VALUE))
@@ -300,6 +314,8 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jToggleButton7)
+                        .addGap(18, 18, 18)
+                        .addComponent(jToggleButton9)
                         .addGap(18, 18, 18)
                         .addComponent(jToggleButton8)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -366,8 +382,7 @@ public class Principal extends javax.swing.JFrame {
 
         String text, finalText = "";
         StringBuffer stringBuffer = new StringBuffer();
-        Huffman huffman = new Huffman() {
-        };
+        Huffman huffman = new Huffman();
 
         do {
             text = JOptionPane.showInputDialog("Ingrese texto: ");
@@ -380,6 +395,8 @@ public class Principal extends javax.swing.JFrame {
         }
 
         HuffmanTree tree = huffman.getTree(charFrequency); // Creo mi árbol
+        huffmanManagement.setTree(tree);
+        huffmanManagement.writeFile();
 
         finalText += "TABLA DE CÓDIGOS\nSÍMBOLO\tCANTIDADES\tCÓDIGO DE HUFFMAN\n";
         finalText += huffman.printCodes(tree, stringBuffer);
@@ -390,6 +407,11 @@ public class Principal extends javax.swing.JFrame {
         finalText += "\nTEXTO DECODIFICADO\n" + huffman.decode(tree, code) + "\n";
 
         jTextArea1.append(finalText);
+
+        codeManagement.loadFile();
+        codeManagement.setCode(code);
+        codeManagement.writeFile();
+
     }//GEN-LAST:event_jToggleButton7MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -476,6 +498,34 @@ public class Principal extends javax.swing.JFrame {
         primArchivo();
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jToggleButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton9MouseClicked
+        jTextArea1.setText("");
+        huffmanManagement.loadFile();
+        HuffmanTree tree = huffmanManagement.getTree();
+
+        String finalText = "";
+        StringBuffer stringBuffer = new StringBuffer();
+        Huffman huffman = new Huffman();
+
+        finalText += "TABLA DE CÓDIGOS\nSÍMBOLO\tCANTIDADES\tCÓDIGO DE HUFFMAN\n";
+        finalText += huffman.printCodes(tree, stringBuffer);
+
+        codeManagement.loadFile();
+        String code = codeManagement.getCode();
+
+        finalText += "\nTEXTO COMPRIMIDO\n" + code + "\n";
+        finalText += "\nTEXTO DECODIFICADO\n" + huffman.decode(tree, code) + "\n";
+
+        jTextArea1.append(finalText);
+    }//GEN-LAST:event_jToggleButton9MouseClicked
+
+    private void jToggleButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton6ActionPerformed
+        JOptionPane.showMessageDialog(this, "1. Para agregar nodos, presione sobre el panel con el clic derecho.\n"
+                + "2. Para seleccionar un nodo, presione el clic izquierdo.\n"
+                + "3. Si desea conectar nodos, seleccione el nodo de inicio, luego presione CTRL y enseguida seleccione el nodo final.\n"
+                + "4. Para eliminar un nodo, seleccione el nodo a seleccionar, y presione SUPR/DEL.");
+    }//GEN-LAST:event_jToggleButton6ActionPerformed
 
     public final int INF = (int) Double.POSITIVE_INFINITY;
 
@@ -732,7 +782,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JToggleButton jToggleButton4;
     private javax.swing.JToggleButton jToggleButton5;
+    private javax.swing.JToggleButton jToggleButton6;
     private javax.swing.JToggleButton jToggleButton7;
     private javax.swing.JToggleButton jToggleButton8;
+    private javax.swing.JToggleButton jToggleButton9;
     // End of variables declaration//GEN-END:variables
+    HuffmanManagement huffmanManagement = new HuffmanManagement("./Árbol.hm");
+    CodeManagement codeManagement = new CodeManagement("./Código.txt");
 }

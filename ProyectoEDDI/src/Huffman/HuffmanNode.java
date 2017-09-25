@@ -5,11 +5,13 @@
  */
 package Huffman;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Ilich (D'R)
  */
-public class HuffmanNode extends HuffmanTree {
+public class HuffmanNode extends HuffmanTree implements Serializable {
 
     public HuffmanTree left;
     public HuffmanTree right;

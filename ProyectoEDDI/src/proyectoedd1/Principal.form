@@ -111,14 +111,17 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jToggleButton1" max="32767" attributes="0"/>
-                          <Component id="jToggleButton2" max="32767" attributes="0"/>
-                          <Component id="jToggleButton3" max="32767" attributes="0"/>
-                          <Component id="jToggleButton4" max="32767" attributes="0"/>
-                          <Component id="jToggleButton5" max="32767" attributes="0"/>
-                          <Component id="jButton6" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jToggleButton1" max="32767" attributes="0"/>
+                              <Component id="jToggleButton2" max="32767" attributes="0"/>
+                              <Component id="jToggleButton3" max="32767" attributes="0"/>
+                              <Component id="jToggleButton4" max="32767" attributes="0"/>
+                              <Component id="jToggleButton5" max="32767" attributes="0"/>
+                              <Component id="jButton6" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="jToggleButton6" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
@@ -159,6 +162,8 @@
                               <Component id="jToggleButton4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jToggleButton5" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jToggleButton6" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="jButton6" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
@@ -179,7 +184,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="853" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="845" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -258,6 +263,17 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JToggleButton" name="jToggleButton6">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="Grafos"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Instrucciones"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton6ActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -348,6 +364,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jToggleButton7" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jToggleButton8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jToggleButton9" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jScrollPane1" min="-2" pref="837" max="-2" attributes="0"/>
@@ -366,6 +383,8 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jToggleButton7" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jToggleButton9" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jToggleButton8" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -412,6 +431,14 @@
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jToggleButton8MouseClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JToggleButton" name="jToggleButton9">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Leer"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jToggleButton9MouseClicked"/>
               </Events>
             </Component>
           </SubComponents>
