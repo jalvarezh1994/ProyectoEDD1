@@ -3,36 +3,39 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package TDAs;
+package E7Kruskal;
+
+import java.util.ArrayList;
 
 /**
  *
  * @author Diego
  */
 public class MergeSort {
-    
-    public static void main(String[] args) {
+
+    public static ArrayList<AristaKruskal> ordenar(AristaKruskal[] a) {
         MergeSort merge = new MergeSort();
-        int[] a =  {0,2,5,-1,-2,-2,25};
-        int[] b = merge.mergesort(a , 0 , a.length-1);
-        for (int i = 0; i < a.length; i++) {
-            System.out.println(b[i]);
+        AristaKruskal[] b = merge.mergesort(a, 0, a.length - 1);
+        ArrayList<AristaKruskal> arr=new ArrayList();
+        for (int i = 0; i < b.length; i++) {
+            arr.add(b[i]);
         }
+        return arr;
     }
 
-    public int[] mergesort(int A[], int izq, int der) {
+    public AristaKruskal[] mergesort(AristaKruskal[] A, int izq, int der) {
         if (izq < der) {
             int m = (izq + der) / 2;
             mergesort(A, izq, m);
             mergesort(A, m + 1, der);
-           return merge(A, izq, m, der);
+            return merge(A, izq, m, der);
         }
         return null;
     }
 
-    public int[] merge(int A[], int izq, int m, int der) {
+    public AristaKruskal[] merge(AristaKruskal A[], int izq, int m, int der) {
         int i, j, k;
-        int[] B = new int[A.length]; //array auxiliar
+        AristaKruskal[] B = new AristaKruskal[A.length]; //array auxiliar
         for (i = izq; i <= der; i++) //copia ambas mitades en el array auxiliar
         {
             B[i] = A[i];
@@ -43,7 +46,7 @@ public class MergeSort {
         k = izq;
         while (i <= m && j <= der) //copia el siguiente elemento más grande
         {
-            if (B[i] <= B[j]) {
+            if (B[i].getPeso() <= B[j].getPeso()) {
                 A[k++] = B[i++];
             } else {
                 A[k++] = B[j++];
@@ -53,7 +56,7 @@ public class MergeSort {
         {
             A[k++] = B[i++]; //primera mitad (si los hay)
         }
-        
+
         return A;
     }
 }

@@ -53,6 +53,7 @@ public class GrafoLista implements Grafo {
     }
 
     public Arista getArista(int pos) {
+        System.out.println(aristas.size());
         return aristas.get(pos);
     }
 
