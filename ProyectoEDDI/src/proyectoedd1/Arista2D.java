@@ -35,6 +35,9 @@ public class Arista2D {
         posNodo2 = nodo2.getPos();
     }
 
+    Arista2D() {
+    }
+
     public Nodo2D getNodo1() {
         return nodo1;
     }

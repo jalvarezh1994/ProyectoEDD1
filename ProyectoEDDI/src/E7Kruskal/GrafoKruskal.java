@@ -57,7 +57,7 @@ public class GrafoKruskal extends GrafoLista {
         } while (contador < aristas.size());
     }
 
-    public void arbolMinimo() {
+    public void kruskal() {
         ordenarAristas();
         int grupo = 0;
         for (int i = 0; i < aristas.size(); i++) {

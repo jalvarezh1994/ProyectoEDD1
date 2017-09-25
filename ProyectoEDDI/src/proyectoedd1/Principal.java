@@ -238,6 +238,10 @@ public class Principal extends javax.swing.JFrame {
             case 1:
                 bicoloreable();
                 break;
+            case 2:
+                break;
+            case 3:
+                break;
             case 4:
                 kruskal();
                 break;
@@ -250,7 +254,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        // TODO add your handling code here:
+        lienzo1.setOpcion(2);
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
@@ -278,7 +282,7 @@ public class Principal extends javax.swing.JFrame {
     public void floyd() {
         ArrayList<Nodo2D> nodos2D = lienzo1.getNodos2D();
         ArrayList<Arista2D> aristas2D = lienzo1.getAristas2D();
-        GrafoFloyd gr = new GrafoFloyd(lienzo1.getTamanoAdyacencia());
+        GrafoFloyd gr = new GrafoFloyd(lienzo1.getTotalAdyacencia());
         for (int i = 0; i < nodos2D.size(); i++) {
             gr.agregarNodo();
         }
@@ -296,8 +300,14 @@ public class Principal extends javax.swing.JFrame {
     public void prim() {
         ArrayList<Nodo2D> nodos2D = lienzo1.getNodos2D();
         ArrayList<Arista2D> aristas2D = lienzo1.getAristas2D();
-        GrafoPrim gr = new GrafoPrim(lienzo1.getTamanoAdyacencia());
-        gr.setAdyacencia(lienzo1.getAdyacencia());
+        GrafoPrim gr = new GrafoPrim(lienzo1.getTotalAdyacencia());
+        int[][] m = new int[lienzo1.getTotalAdyacencia()][lienzo1.getTotalAdyacencia()];
+        for (int i = 0; i < lienzo1.getAdyacenciaSize(); i++) {
+            for (int j = 0; j < lienzo1.getAdyacenciaSize(); j++) {
+                m[i][j]=lienzo1.getAdyacencia()[i][j]+0;
+            }
+        }
+        gr.setAdyacencia(m);
         gr.setSize(lienzo1.getAdyacenciaSize());
         gr.prim();
         for (int i = 0; i < nodos2D.size(); i++) {
@@ -335,7 +345,7 @@ public class Principal extends javax.swing.JFrame {
             a.setColor(Color.BLACK);
             gr.agregarArista(a.getNodo1().getPos(), a.getNodo2().getPos(), a.getPeso());
         }
-        gr.arbolMinimo();
+        gr.kruskal();
         int total = 0;
         for (int i = 0; i < aristas2D.size(); i++) {
             AristaKruskal a = (AristaKruskal) gr.getArista(i);

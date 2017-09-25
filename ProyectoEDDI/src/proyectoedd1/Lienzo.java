@@ -16,6 +16,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
+import javafx.scene.shape.Line;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,10 +25,10 @@ import javax.swing.JOptionPane;
  */
 public class Lienzo extends Canvas implements MouseListener, MouseMotionListener, KeyListener {
 
-    private ArrayList<Nodo2D> nodos2D = new ArrayList();
-    private ArrayList<Arista2D> aristas2D = new ArrayList();
-    private int tamanoAdyacencia = 100;
-    private int adyacencia[][] = new int[tamanoAdyacencia][tamanoAdyacencia];
+    private ArrayList<Nodo2D> nodos2D;
+    private ArrayList<Arista2D> aristas2D;
+    private int totalAdyacencia = 100;
+    private int adyacencia[][] = new int[totalAdyacencia][totalAdyacencia];
     private int size = 0;
     private int opcion;
     private int tamanoNodo = 30;
@@ -40,8 +41,10 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
         addMouseListener(this);
         addMouseMotionListener(this);
         addKeyListener(this);
-        for (int i = 0; i < tamanoAdyacencia; i++) {
-            for (int j = 0; j < tamanoAdyacencia; j++) {
+        nodos2D = new ArrayList();
+        aristas2D = new ArrayList();
+        for (int i = 0; i < totalAdyacencia; i++) {
+            for (int j = 0; j < totalAdyacencia; j++) {
                 adyacencia[i][j] = INF;
             }
         }
@@ -56,8 +59,10 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
             g2.setColor(a.getColor());
             g2.drawLine(a.getNodo1().getX() + 15, a.getNodo1().getY() + 15,
                     a.getNodo2().getX() + 15, a.getNodo2().getY() + 15);
-            double posTextoX = (0.5) * ((double) (a.getNodo1().getX() + 10 + a.getNodo2().getX() + 10));
-            double posTextoY = (0.5) * ((double) (a.getNodo1().getY() + 10 + a.getNodo2().getY() + 10));
+            double posTextoX = (0.50) * ((double) (a.getNodo1().getX()
+                    + a.getNodo2().getX() + 20));
+            double posTextoY = (0.50) * ((double) (a.getNodo1().getY()
+                    + a.getNodo2().getY() + 20));
             g2.setColor(Color.BLUE);
             g2.drawString(a.getTexto(), (int) posTextoX, (int) posTextoY);
         }
@@ -79,17 +84,38 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
     public void mousePressed(MouseEvent e) {
         switch (opcion) {
             case 1:
+                for (int i = 0; i < aristas2D.size(); i++) {
+                    aristas2D.get(i).setColor(Color.BLACK);
+                }
                 bicoloreable(e);
                 break;
+            case 2:
+                for (int i = 0; i < aristas2D.size(); i++) {
+                    aristas2D.get(i).setColor(Color.BLACK);
+                }
+                dijkstra(e);
+                break;
+            case 3:
+                break;
             case 4:
+                for (int i = 0; i < aristas2D.size(); i++) {
+                    aristas2D.get(i).setColor(Color.BLACK);
+                }
                 kruskal(e);
                 break;
             case 5:
+                for (int i = 0; i < aristas2D.size(); i++) {
+                    aristas2D.get(i).setColor(Color.BLACK);
+                }
                 kruskal(e);
                 break;
             default:
                 JOptionPane.showMessageDialog(this, "Seleccione una opción");
         }
+    }
+
+    private void dijkstra(MouseEvent e) {
+
     }
 
     private void kruskal(MouseEvent e) {
@@ -105,7 +131,8 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
                 arrastrar = true;
                 try {
                     if (presionado && e.isControlDown() && seleccion != i && seleccion != -1
-                            && adyacencia[n2.getPos()][n.getPos()] == INF && adyacencia[n.getPos()][n2.getPos()] == INF) {
+                            && adyacencia[n2.getPos()][n.getPos()]
+                            == INF && adyacencia[n.getPos()][n2.getPos()] == INF) {
                         boolean error;
                         int pesoEntero = 0;
                         do {
@@ -151,7 +178,8 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
                 arrastrar = true;
                 try {
                     if (presionado && e.isControlDown() && seleccion != -1 && seleccion != i
-                            && adyacencia[n2.getPos()][n.getPos()] == INF && adyacencia[n.getPos()][n2.getPos()] == INF) {
+                            && adyacencia[n2.getPos()][n.getPos()] == INF
+                            && adyacencia[n.getPos()][n2.getPos()] == INF) {
                         aristas2D.add(new Arista2D(n2, n, Color.black));
                         adyacencia[n2.getPos()][n.getPos()] = 1;
                         adyacencia[n.getPos()][n2.getPos()] = 1;
@@ -166,24 +194,10 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
             if (e.isMetaDown()) {
                 nodos2D.add(new Nodo2D(e.getX() - 15, e.getY() - 15,
                         Color.BLACK, nodos2D.size()));
+                size++;
             }
         }
         repaint();
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        arrastrar = false;
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
     }
 
     @Override
@@ -193,11 +207,6 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
             nodos2D.get(seleccion).setY(e.getY() - 15);
             repaint();
         }
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-
     }
 
     @Override
@@ -223,6 +232,56 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
             seleccion = -1;
             repaint();
         }
+    }
+
+    public void eliminarNodoMatriz(int[][] m, int n) {
+        n = n - 1;
+        for (int i = 0; i < m.length; i++) {
+            for (int j = 0; j < m[i].length; j++) {
+                try {
+                    if (i > n && j > n) {
+                        m[i][j] = m[i + 1][j + 1];
+                    } else if (i > n) {
+                        m[i][j] = m[i + 1][j];
+                    } else if (j > n) {
+                        m[i][j] = m[i][j + 1];
+                    }
+                } catch (Exception e) {
+                }
+            }
+        }
+    }
+
+    public void clear() {
+        this.getNodos2D().clear();
+        this.getAristas2D().clear();
+        for (int i = 0; i < totalAdyacencia; i++) {
+            for (int j = 0; j < totalAdyacencia; j++) {
+                adyacencia[i][j] = INF;
+            }
+        }
+        size = 0;
+        this.repaint();
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        arrastrar = false;
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 
     @Override
@@ -283,24 +342,12 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
         this.opcion = opcion;
     }
 
-    public void clear() {
-        this.getNodos2D().clear();
-        this.getAristas2D().clear();
-        for (int i = 0; i < tamanoAdyacencia; i++) {
-            for (int j = 0; j < tamanoAdyacencia; j++) {
-                adyacencia[i][j] = INF;
-            }
-        }
-        size = 0;
-        this.repaint();
+    public int getTotalAdyacencia() {
+        return totalAdyacencia;
     }
 
-    public int getTamanoAdyacencia() {
-        return tamanoAdyacencia;
-    }
-
-    public void setTamanoAdyacencia(int tamanoAdyacencia) {
-        this.tamanoAdyacencia = tamanoAdyacencia;
+    public void setTotalAdyacencia(int totalAdyacencia) {
+        this.totalAdyacencia = totalAdyacencia;
     }
 
     public int[][] getAdyacencia() {
@@ -317,22 +364,5 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
 
     public void setAdyacenciaSize(int size) {
         this.size = size;
-    }
-
-    public void eliminarNodoMatriz(int[][] m, int n) {
-        for (int i = 0; i < m.length; i++) {
-            for (int j = 0; j < m[i].length; j++) {
-                try {
-                    if (i > n && j > n) {
-                        m[i][j] = m[i + 1][j + 1];
-                    } else if (i > n) {
-                        m[i][j] = m[i + 1][j];
-                    } else if (j > n) {
-                        m[i][j] = m[i][j + 1];
-                    }
-                } catch (Exception e) {
-                }
-            }
-        }
     }
 }

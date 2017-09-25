@@ -25,6 +25,9 @@ public class Nodo2D {
         this.pos = pos;
     }
 
+    Nodo2D() {
+    }
+
     public int getX() {
         return x;
     }
