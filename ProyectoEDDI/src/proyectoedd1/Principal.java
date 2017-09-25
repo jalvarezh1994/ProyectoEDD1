@@ -685,7 +685,7 @@ public class Principal extends javax.swing.JFrame {
         gr.setAdyacencia(m);
         gr.setSize(m.length);
          for (int i = 0; i < m.length; i++) {
-            nodos2D.add(new Nodo2D((int) (Math.random() * 500) + 200, (int) (Math.random() * 500) + 100, Color.black, i));
+            nodos2D.add(new Nodo2D((int) (Math.random() * 500) + 200, (int) (Math.random() * 50) + 100, Color.black, i));
         }
 
         for (int i = 0; i < m.length; i++) {
@@ -743,7 +743,7 @@ public class Principal extends javax.swing.JFrame {
         gr.setSize(m.length);
 
         for (int i = 0; i < m.length; i++) {
-            nodos2D.add(new Nodo2D((int) (Math.random() * 500) + 200, (int) (Math.random() * 500) + 100, Color.black, i));
+            nodos2D.add(new Nodo2D((int) (Math.random() * 500) + 200, (int) (Math.random() * 50) + 100, Color.black, i));
         }
 
         for (int i = 0; i < m.length; i++) {
@@ -759,6 +759,9 @@ public class Principal extends javax.swing.JFrame {
 
         lienzo1.repaint();
         gr.floyd();
+        jDialog1.setVisible(true);
+        jDialog1.pack();
+        matrizFloyd.setText(gr.floyd());
     }
 
     //Listo
@@ -774,20 +777,20 @@ public class Principal extends javax.swing.JFrame {
         gr.setSize(m.length);
 
         for (int i = 0; i < m.length; i++) {
-            nodos2D.add(new Nodo2D((int) (Math.random() * 500) + 200, (int) (Math.random() * 500) + 100, Color.black, i));
+            nodos2D.add(new Nodo2D((int) (Math.random() * 500) + 200, (int) (Math.random() * 50) + 100, Color.black, i));
         }
 
         for (int i = 0; i < m.length; i++) {
             for (int j = 0; j < m.length; j++) {
                 if (m[i][j] != INF) {
-                    aristas2D.add(new Arista2D(nodos2D.get(i), nodos2D.get(i), Color.black, m[i][j]));
+                    aristas2D.add(new Arista2D(nodos2D.get(i), nodos2D.get(j), Color.black, m[i][j]));
                 }
             }
         }
         //System.out.println(aristas2D + "negro");
         lienzo1.setNodos2D(nodos2D);
         lienzo1.setAristas2D(aristas2D);
-
+        
         gr.prim();
 
         for (int i = 0; i < nodos2D.size(); i++) {
@@ -882,13 +885,13 @@ public class Principal extends javax.swing.JFrame {
         int[][] m = archivo.leerArchivoGrafo(file.getSelectedFile(), Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de Nodos del grafo")));
         GrafoKruskal gr = new GrafoKruskal();
         for (int i = 0; i < m.length; i++) {
-            nodos2D.add(new Nodo2D((int) (Math.random() * 500) + 200, (int) (Math.random() * 500) + 100, Color.black, i));
+            nodos2D.add(new Nodo2D((int) (Math.random() * 500) + 200, (int) (Math.random() * 50) + 100, Color.black, i));
         }
 
         for (int i = 0; i < m.length; i++) {
             for (int j = 0; j < m.length; j++) {
                 if (m[i][j] != INF) {
-                    aristas2D.add(new Arista2D(nodos2D.get(i), nodos2D.get(i), Color.black, m[i][j]));
+                    aristas2D.add(new Arista2D(nodos2D.get(i), nodos2D.get(j), Color.black, m[i][j]));
                 }
             }
         }
@@ -953,7 +956,7 @@ public class Principal extends javax.swing.JFrame {
         GrafoBicoloreable gr = new GrafoBicoloreable();
         //Rescatar del matriz de adyacencia
         for (int i = 0; i < m.length; i++) {
-            nodos2D.add(new Nodo2D((int) (Math.random() * 500) + 200, (int) (Math.random() * 500) + 100, Color.black, i));
+            nodos2D.add(new Nodo2D((int) (Math.random() * 500) + 200, (int) (Math.random() * 50) + 100, Color.black, i));
         }
 
         for (int i = 0; i < m.length; i++) {
