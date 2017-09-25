@@ -239,7 +239,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(340, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Árboles", jPanel2);
+        jTabbedPane1.addTab("Árbol de Expresiones", jPanel2);
 
         jToggleButton7.setText("Huffman");
         jToggleButton7.addMouseListener(new java.awt.event.MouseAdapter() {
