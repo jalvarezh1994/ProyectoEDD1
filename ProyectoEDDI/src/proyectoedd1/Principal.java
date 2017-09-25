@@ -27,11 +27,13 @@ import javax.swing.JRadioButton;
  */
 public class Principal extends javax.swing.JFrame {
 
+    Lienzo lienzo1 = new Lienzo();
+
     /**
      * Creates new form principal
      */
     public Principal() {
-        Lienzo lienzo = new Lienzo();
+
         initComponents();
     }
 
@@ -47,10 +49,9 @@ public class Principal extends javax.swing.JFrame {
         Grafos = new javax.swing.ButtonGroup();
         Advertencia = new javax.swing.JDialog();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel3 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         PanelCanvas = new javax.swing.JPanel();
-        lienzo1 = new proyectoedd1.Lienzo();
         jToggleButton1 = new javax.swing.JToggleButton();
         jToggleButton2 = new javax.swing.JToggleButton();
         jToggleButton3 = new javax.swing.JToggleButton();
@@ -62,6 +63,12 @@ public class Principal extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jTextExpresion = new javax.swing.JTextField();
         jTextResultado = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        jToggleButton7 = new javax.swing.JToggleButton();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jToggleButton8 = new javax.swing.JToggleButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -86,13 +93,11 @@ public class Principal extends javax.swing.JFrame {
         PanelCanvas.setLayout(PanelCanvasLayout);
         PanelCanvasLayout.setHorizontalGroup(
             PanelCanvasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelCanvasLayout.createSequentialGroup()
-                .addComponent(lienzo1, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGap(0, 853, Short.MAX_VALUE)
         );
         PanelCanvasLayout.setVerticalGroup(
             PanelCanvasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lienzo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 422, Short.MAX_VALUE)
         );
 
         Grafos.add(jToggleButton1);
@@ -149,13 +154,13 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1)
                     .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jToggleButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -163,29 +168,29 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jToggleButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jToggleButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(PanelCanvas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(57, 57, 57)))
                 .addGap(15, 15, 15))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(9, 9, 9)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jButton1))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(PanelCanvas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jToggleButton1)
                         .addGap(18, 18, 18)
                         .addComponent(jToggleButton2)
@@ -200,7 +205,7 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(55, 55, 55))))
         );
 
-        jTabbedPane1.addTab("Grafos", jPanel3);
+        jTabbedPane1.addTab("Grafos", jPanel1);
 
         jButton2.setFont(new java.awt.Font("Felix Titling", 0, 14)); // NOI18N
         jButton2.setText("Calcular Expresiones");
@@ -239,7 +244,61 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(340, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Árboles", jPanel2);
+        jTabbedPane1.addTab("Árbol de Expresiones", jPanel2);
+
+        jToggleButton7.setText("Huffman");
+        jToggleButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jToggleButton7MouseClicked(evt);
+            }
+        });
+
+        jLabel2.setText("Opciones");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jToggleButton8.setText("Instrucciones");
+        jToggleButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jToggleButton8MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jToggleButton7)
+                            .addComponent(jToggleButton8))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 837, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jToggleButton7)
+                        .addGap(18, 18, 18)
+                        .addComponent(jToggleButton8)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Huffman", jPanel3);
 
         jMenu1.setText("File");
 
@@ -279,6 +338,71 @@ public class Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formMouseClicked
 
+    private void jToggleButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton8MouseClicked
+        JOptionPane.showMessageDialog(this, "1. Para el compresor de Huffman, seleccione el botón correspondiente.\n"
+                + "2. Acto seguido, ingrese el texto que desea codificar y decodificar.\n"
+                + "3. Para ingresar otro texto nuevamente, repita los pasos anteriores.\n");
+    }//GEN-LAST:event_jToggleButton8MouseClicked
+
+    private void jToggleButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton7MouseClicked
+        jTextArea1.setText("");
+
+        String text, finalText = "";
+        StringBuffer stringBuffer = new StringBuffer();
+        Huffman huffman = new Huffman();
+
+        do {
+            text = JOptionPane.showInputDialog("Ingrese texto: ");
+        } while (text.isEmpty());
+
+        int[] charFrequency = new int[256];
+
+        for (char character : text.toCharArray()) {
+            charFrequency[character]++;
+        }
+
+        HuffmanTree tree = huffman.getTree(charFrequency); // Creo mi árbol
+
+        finalText += "TABLA DE CÓDIGOS\nSÍMBOLO\tCANTIDADES\tCÓDIGO DE HUFFMAN\n";
+        finalText += huffman.printCodes(tree, stringBuffer);
+
+        String code = huffman.encode(tree, text);
+
+        finalText += "\nTEXTO COMPRIMIDO\n" + code + "\n";
+        finalText += "\nTEXTO DECODIFICADO\n" + huffman.decode(tree, code) + "\n";
+
+        jTextArea1.append(finalText);
+    }//GEN-LAST:event_jToggleButton7MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String texto = jTextExpresion.getText();
+        ArbolBinario arbol = new ArbolBinario(100);
+        boolean valido = true;
+        int numero;
+
+        for (int i = 0; i < texto.length(); i++) {
+            numero = (int) texto.charAt(i);
+
+            if (numero < 40 || numero > 58 || numero == 44 || numero == 46) {
+                valido = false;
+                break;
+            }
+        }
+
+        if (!valido) {
+            JOptionPane.showMessageDialog(this, "Ingrese valores correctos, por favor");
+        } else {
+            arbol.crearArbolExpresiones(arbol.convertirInfija_Postfija(texto));
+            arbol.postOrden(0);
+            jTextResultado.setText(arbol.nodoRaiz().getElemento().toString());
+            jTextExpresion.setText("");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        lienzo1.clear();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         int opc = lienzo1.getOpcion();
         switch (opc) {
@@ -289,7 +413,7 @@ public class Principal extends javax.swing.JFrame {
                 kruskal();
                 break;
             case 3:
-               // floyd();
+                // floyd();
                 break;
             case 5:
                 prim();
@@ -299,45 +423,26 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
-
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        lienzo1.setOpcion(1);
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        lienzo1.clear();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jToggleButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton5ActionPerformed
+        lienzo1.setOpcion(5);
+    }//GEN-LAST:event_jToggleButton5ActionPerformed
 
     private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
         lienzo1.setOpcion(4);
     }//GEN-LAST:event_jToggleButton4ActionPerformed
 
-    private void jToggleButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton5ActionPerformed
-        lienzo1.setOpcion(5);
-    }//GEN-LAST:event_jToggleButton5ActionPerformed
-
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
         lienzo1.setOpcion(3);
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        ArbolBinario arbol = new ArbolBinario(100);
-        if (jTextExpresion.getText().equals("")) {
+    
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+ 
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
 
-            Advertencia.setLocation(this.getHeight() / 2, this.getWidth() / 2);
-            Advertencia.setBounds(new Rectangle(300, 75));
-            Advertencia.setVisible(true);
-        } else {
-            arbol.crearArbolExpresiones(arbol.convertirInfija_Postfija(jTextExpresion.getText()));
-            arbol.postOrden(0);
-            jTextResultado.setText(arbol.nodoRaiz().getElemento().toString());
-            jTextExpresion.setText("");
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        lienzo1.setOpcion(1);
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         floydArchivo();
@@ -373,14 +478,14 @@ public class Principal extends javax.swing.JFrame {
         GrafoFloyd gr = new GrafoFloyd(m.length);
         gr.setAdyacencia(m);
         gr.setSize(m.length);
-        
+
         for (int i = 0; i < m.length; i++) {
-            nodos2D.add(new Nodo2D((int) (Math.random() * 500) + 200, 200 , Color.black, i));
+            nodos2D.add(new Nodo2D((int) (Math.random() * 500) + 200, 200, Color.black, i));
         }
 
         for (int i = 0; i < m.length; i++) {
             for (int j = 0; j < m.length; j++) {
-                if (m[i][j]!=INF) {
+                if (m[i][j] != INF) {
                     aristas2D.add(new Arista2D(nodos2D.get(i), nodos2D.get(i), Color.black, m[i][j]));
                 }
             }
@@ -519,13 +624,17 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextExpresion;
     private javax.swing.JTextField jTextResultado;
     private javax.swing.JToggleButton jToggleButton1;
@@ -533,6 +642,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JToggleButton jToggleButton4;
     private javax.swing.JToggleButton jToggleButton5;
-    private proyectoedd1.Lienzo lienzo1;
+    private javax.swing.JToggleButton jToggleButton7;
+    private javax.swing.JToggleButton jToggleButton8;
     // End of variables declaration//GEN-END:variables
 }
