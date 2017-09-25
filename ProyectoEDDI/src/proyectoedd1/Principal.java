@@ -21,6 +21,10 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import Huffman.HuffmanTree;
+import Huffman.Huffman;
+import Huffman.HuffmanTree;
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author jorge
@@ -35,6 +39,10 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
 
         initComponents();
+        lienzo1.setBounds(PanelCanvas.getX() - 100, PanelCanvas.getY() - 100, PanelCanvas.getWidth(), PanelCanvas.getHeight());
+        lienzo1.setBackground(Color.lightGray);
+        lienzo1.setVisible(true);
+        PanelCanvas.add(lienzo1);
     }
 
     /**
@@ -72,6 +80,7 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         Advertencia.setTitle("DEBE ESCRIBIR UNA EXPRESION");
@@ -302,13 +311,21 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu1.setText("File");
 
-        jMenuItem1.setText("Archivo");
+        jMenuItem1.setText("Floyd");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
             }
         });
         jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("Prim");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
 
         jMenuBar1.add(jMenu1);
 
@@ -349,7 +366,7 @@ public class Principal extends javax.swing.JFrame {
 
         String text, finalText = "";
         StringBuffer stringBuffer = new StringBuffer();
-        HuffmanTree huffman = new HuffmanTree(4) {
+        Huffman huffman = new Huffman() {
         };
 
         do {
@@ -400,7 +417,6 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-                                        
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         int opc = lienzo1.getOpcion();
@@ -425,14 +441,13 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
-
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                               
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         lienzo1.setOpcion(2);
-    }                                              
+    }
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                               
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         lienzo1.setOpcion(1);
-    }                                              
+    }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         lienzo1.clear();
@@ -453,16 +468,21 @@ public class Principal extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         floydArchivo();
-
+        lienzo1.setOpcion(3);
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        primArchivo();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     public final int INF = (int) Double.POSITIVE_INFINITY;
 
-    public void dijkstra(){
-        
+    public void dijkstra() {
+
     }
-    
+
     public void floyd() {
         ArrayList<Nodo2D> nodos2D = lienzo1.getNodos2D();
         ArrayList<Arista2D> aristas2D = lienzo1.getAristas2D();
@@ -482,10 +502,12 @@ public class Principal extends javax.swing.JFrame {
     }
 
     public void floydArchivo() {
+        JFileChooser file = new JFileChooser();
+        file.showOpenDialog(jPanel1);
         ArrayList<Nodo2D> nodos2D = new ArrayList<>();
         ArrayList<Arista2D> aristas2D = new ArrayList<>();
         Archivos archivo = new Archivos();
-        int[][] m = archivo.leerArchivoGrafo(new File("C:\\Users\\Diego\\Desktop\\Matriz.txt"), 5);
+        int[][] m = archivo.leerArchivoGrafo(file.getSelectedFile(), Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de Nodos del grafo")));
         GrafoFloyd gr = new GrafoFloyd(m.length);
         gr.setAdyacencia(m);
         gr.setSize(m.length);
@@ -501,12 +523,62 @@ public class Principal extends javax.swing.JFrame {
                 }
             }
         }
-        System.out.println(aristas2D);
+        //System.out.println(aristas2D + "negro");
         lienzo1.setNodos2D(nodos2D);
         lienzo1.setAristas2D(aristas2D);
 
         lienzo1.repaint();
         gr.floyd();
+    }
+
+    public void primArchivo() {
+        JFileChooser file = new JFileChooser();
+        file.showOpenDialog(jPanel1);
+        ArrayList<Nodo2D> nodos2D = new ArrayList<>();
+        ArrayList<Arista2D> aristas2D = new ArrayList<>();
+        Archivos archivo = new Archivos();
+        int[][] m = archivo.leerArchivoGrafo(file.getSelectedFile(), Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de Nodos del grafo")));
+        GrafoPrim gr = new GrafoPrim(m.length);
+        gr.setAdyacencia(m);
+        gr.setSize(m.length);
+
+        for (int i = 0; i < m.length; i++) {
+            nodos2D.add(new Nodo2D((int) (Math.random() * 500) + 200, 200, Color.black, i));
+        }
+
+        for (int i = 0; i < m.length; i++) {
+            for (int j = 0; j < m.length; j++) {
+                if (m[i][j] != INF) {
+                    aristas2D.add(new Arista2D(nodos2D.get(i), nodos2D.get(i), Color.black, m[i][j]));
+                }
+            }
+        }
+        //System.out.println(aristas2D + "negro");
+        lienzo1.setNodos2D(nodos2D);
+        lienzo1.setAristas2D(aristas2D);
+
+        gr.prim();
+
+        for (int i = 0; i < nodos2D.size(); i++) {
+            nodos2D.get(i).setColor(Color.YELLOW);
+        }
+        int[] salida = gr.getSalida();
+        for (int i = 0; i < aristas2D.size(); i++) {
+            Arista2D a = aristas2D.get(i);
+            for (int j = 0; j < nodos2D.size(); j++) {
+                if (a.contieneNodo(j) && a.contieneNodo(salida[j])) {
+                    a.setColor(Color.YELLOW);
+                }
+            }
+        }
+        int peso = 0;
+        for (int i = 0; i < aristas2D.size(); i++) {
+            if (aristas2D.get(i).getColor().equals(Color.YELLOW)) {
+                peso += aristas2D.get(i).getPeso();
+            }
+        }
+        lienzo1.repaint();
+        JOptionPane.showMessageDialog(this, "Total: " + peso);
     }
 
     public void prim() {
@@ -516,7 +588,7 @@ public class Principal extends javax.swing.JFrame {
         int[][] m = new int[lienzo1.getTotalAdyacencia()][lienzo1.getTotalAdyacencia()];
         for (int i = 0; i < lienzo1.getAdyacenciaSize(); i++) {
             for (int j = 0; j < lienzo1.getAdyacenciaSize(); j++) {
-                m[i][j]=lienzo1.getAdyacencia()[i][j]+0;
+                m[i][j] = lienzo1.getAdyacencia()[i][j] + 0;
             }
         }
         gr.setAdyacencia(m);
@@ -646,6 +718,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

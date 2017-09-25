@@ -52,21 +52,30 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
 
     @Override
     public void paint(Graphics g) {
+
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(3));
+
         for (int i = 0; i < aristas2D.size(); i++) {
-            
+
             Arista2D a = aristas2D.get(i);
             g2.setColor(a.getColor());
             g2.drawLine(a.getNodo1().getX() + 15, a.getNodo1().getY() + 15,
                     a.getNodo2().getX() + 15, a.getNodo2().getY() + 15);
+<<<<<<< HEAD
             double posTextoX = (0.50) * ((double) (a.getNodo1().getX()
                     + a.getNodo2().getX() + 20));
             double posTextoY = (0.50) * ((double) (a.getNodo1().getY()
                     + a.getNodo2().getY() + 20));
+=======
+            double posTextoX = (0.5) * ((double) (a.getNodo1().getX() + 10 + a.getNodo2().getX() + 10));
+            double posTextoY = (0.5) * ((double) (a.getNodo1().getY() + 10 + a.getNodo2().getY() + 10));
+
+>>>>>>> 84e675f93a90949b7b431909aca6bb69bc46fa88
             g2.setColor(Color.BLUE);
             g2.drawString(a.getTexto(), (int) posTextoX, (int) posTextoY);
         }
+
         for (int i = 0; i < nodos2D.size(); i++) {
             Nodo2D n = nodos2D.get(i);
             g.setColor(n.getColor());
@@ -74,6 +83,7 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
             g.setColor(Color.blue);
             g.drawString(Integer.toString(i), n.getX() + 11, n.getY() + 19);
         }
+
     }
 
     @Override
