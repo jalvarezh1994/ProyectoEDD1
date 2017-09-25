@@ -65,6 +65,7 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
                     + a.getNodo2().getX() + 20));
             double posTextoY = (0.50) * ((double) (a.getNodo1().getY()
                     + a.getNodo2().getY() + 20));
+
             g2.setColor(Color.BLUE);
             if (opcion == 2 || opcion == 3) {
                 String dirigido = "";

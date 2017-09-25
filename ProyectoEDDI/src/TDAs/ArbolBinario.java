@@ -243,16 +243,18 @@ public class ArbolBinario {
         imprimir();
     }
 
-    public void imprimirRecursivo(int posicion, int nivel) {
+    public String imprimirRecursivo(int posicion, int nivel) {
+        String acum ="";
         for (int i = 0; i < tamArbol; i++) {
             if (arbol[i].getFather() == posicion) {
                 for (int j = 0; j < nivel; j++) {
-                    System.out.print("--");
+                   acum+="--";
                 }
-                System.out.println(arbol[i].getElemento());
-                imprimirRecursivo(i, nivel + 1);
+               
+                acum+=arbol[i].getElemento()+"\n"+imprimirRecursivo(i, nivel + 1);
             }
         }
+        return acum;
     }
 
     public void imprimir() {

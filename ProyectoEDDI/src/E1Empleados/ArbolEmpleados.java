@@ -47,16 +47,18 @@ public class ArbolEmpleados {
 
     //Se puede imprimir cualquier sub-árbol.
     //Para imprimir todo el árbol usar: imprimirRecursivo(0,0);
-    public void imprimirRecursivo(int padre, int nivel) {
+    public String imprimirRecursivo(int padre, int nivel) {
+        String acum = "";
         for (int i = 1; i < size; i++) {
             if (padres[i] == padre) {
                 for (int j = 0; j < nivel; j++) {
-                    System.out.print("--");
+                    acum+="--";
                 }
-                System.out.println(empleados[i]);
-                imprimirRecursivo(i, nivel + 1);
+                
+                acum+=empleados[i]+"\n"+imprimirRecursivo(i, nivel + 1);
             }
         }
+        return acum;
     }
 
     //Hace falta usar los hijos en lugar de recorrer todo el arreglo    
