@@ -33,6 +33,7 @@ import javax.swing.JFileChooser;
  */
 public class Principal extends javax.swing.JFrame {
 
+    Archivos archivo1;
     Lienzo lienzo1 = new Lienzo();
 
     /**
@@ -72,20 +73,35 @@ public class Principal extends javax.swing.JFrame {
         jToggleButton5 = new javax.swing.JToggleButton();
         jButton6 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jTextExpresion = new javax.swing.JTextField();
-        jTextResultado = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jToggleButton7 = new javax.swing.JToggleButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jToggleButton8 = new javax.swing.JToggleButton();
+        jPanel2 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        jTextExpresion = new javax.swing.JTextField();
+        jTextResultado = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        arbol1 = new javax.swing.JTextArea();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        arbol2 = new javax.swing.JTextArea();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextEmpleados = new javax.swing.JTextArea();
+        jButton4 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         Advertencia.setTitle("DEBE ESCRIBIR UNA EXPRESION");
@@ -248,45 +264,6 @@ public class Principal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Grafos", jPanel1);
 
-        jButton2.setFont(new java.awt.Font("Felix Titling", 0, 14)); // NOI18N
-        jButton2.setText("Calcular Expresiones");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jTextExpresion.setFont(new java.awt.Font("Felix Titling", 0, 12)); // NOI18N
-
-        jTextResultado.setEditable(false);
-        jTextResultado.setFont(new java.awt.Font("Felix Titling", 1, 14)); // NOI18N
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextExpresion)
-                    .addComponent(jTextResultado))
-                .addContainerGap(759, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTextExpresion, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(340, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Árbol de Expresiones", jPanel2);
-
         jToggleButton7.setText("Huffman");
         jToggleButton7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -341,6 +318,128 @@ public class Principal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Huffman", jPanel3);
 
+        jButton2.setFont(new java.awt.Font("Felix Titling", 0, 14)); // NOI18N
+        jButton2.setText("Calcular Expresiones");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jTextExpresion.setFont(new java.awt.Font("Felix Titling", 0, 12)); // NOI18N
+
+        jTextResultado.setEditable(false);
+        jTextResultado.setFont(new java.awt.Font("Felix Titling", 1, 14)); // NOI18N
+
+        arbol1.setColumns(20);
+        arbol1.setRows(5);
+        jScrollPane3.setViewportView(arbol1);
+
+        arbol2.setColumns(20);
+        arbol2.setRows(5);
+        jScrollPane4.setViewportView(arbol2);
+
+        jLabel4.setText("Arbol Expresiones");
+
+        jLabel5.setText("Arbol Resultados");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextExpresion)
+                    .addComponent(jTextResultado))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(114, 114, 114)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(371, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jTextExpresion, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(49, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Árbol de Expresiones", jPanel2);
+
+        jButton3.setText("Cargar Empleados");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jTextEmpleados.setColumns(20);
+        jTextEmpleados.setRows(5);
+        jScrollPane5.setViewportView(jTextEmpleados);
+
+        jButton4.setText("Obtener Rendimiento de Jefe ");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextField1))
+                .addContainerGap(556, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(133, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Arbol Empleados", jPanel4);
+
         jMenu1.setText("File");
 
         jMenuItem1.setText("Floyd");
@@ -358,6 +457,25 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem2);
+
+        jMenuItem3.setText("Dijkstra");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
+        jMenuItem4.setText("Kruskal");
+        jMenu1.add(jMenuItem4);
+
+        jMenuItem5.setText("Bicoloreable");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem5);
 
         jMenuBar1.add(jMenu1);
 
@@ -430,20 +548,21 @@ public class Principal extends javax.swing.JFrame {
         boolean valido = true;
         int numero;
 
-        for (int i = 0; i < texto.length(); i++) {
-            numero = (int) texto.charAt(i);
-
-            if (numero < 40 || numero > 58 || numero == 44 || numero == 46) {
-                valido = false;
-                break;
-            }
-        }
-
+//        for (int i = 0; i < texto.length(); i++) {
+//            numero = (int) texto.charAt(i);
+//
+//            if (numero < 40 || numero > 58 || numero == 44 || numero == 46) {
+//                valido = false;
+//                break;
+//            }
+//        }
         if (!valido) {
             JOptionPane.showMessageDialog(this, "Ingrese valores correctos, por favor");
         } else {
             arbol.crearArbolExpresiones(arbol.convertirInfija_Postfija(texto));
+            arbol1.setText(arbol.imprimirRecursivo(-1, 0));
             arbol.postOrden(0);
+            arbol2.setText(arbol.imprimirRecursivo(-1, 0));
             jTextResultado.setText(arbol.nodoRaiz().getElemento().toString());
             jTextExpresion.setText("");
         }
@@ -500,12 +619,38 @@ public class Principal extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         floydArchivo();
-        lienzo1.setOpcion(3);
+        //lienzo1.setOpcion(3);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         primArchivo();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        bicoloreableArchivo();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        JFileChooser file = new JFileChooser();
+        file.showOpenDialog(jPanel1);
+        archivo1 = new Archivos();
+        archivo1.leerEmpleados(file.getSelectedFile());
+        archivo1.crearArbol();
+        jTextEmpleados.setText(archivo1.getArbol().imprimirRecursivo(0, 0));
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        int aux = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el Jefe al que desea calcular rendimiento:"));
+        jTextField1.setText(Float.toString(archivo1.getArbol().calcularRendimiento(aux)));
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        dijkstraArchivo();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     public final int INF = (int) Double.POSITIVE_INFINITY;
 
@@ -521,6 +666,41 @@ public class Principal extends javax.swing.JFrame {
                 gr.agregarArista(i, j, lienzo1.getAdyacencia()[i][j]);
             }
         }
+        Vertice[] vertices;
+        vertices = gr.dijkstra(lienzo1.getSeleccion());
+        for (int i = 0; i < vertices.length; i++) {
+            nodos2D.get(i).setTexto("[" + vertices[i].getPesoAcumulado() + ","
+                    + vertices[i].getProcedencia() + "]");
+        }
+        lienzo1.repaint();
+    }
+    public void dijkstraArchivo() {
+        JFileChooser file = new JFileChooser();
+        file.showOpenDialog(jPanel1);
+        ArrayList<Nodo2D> nodos2D = new ArrayList<>();
+        ArrayList<Arista2D> aristas2D = new ArrayList<>();
+        Archivos archivo = new Archivos();
+        int[][] m = archivo.leerArchivoGrafo(file.getSelectedFile(), Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de Nodos del grafo")));
+        GrafoDijkstra gr = new GrafoDijkstra(m.length);
+        gr.setAdyacencia(m);
+        gr.setSize(m.length);
+         for (int i = 0; i < m.length; i++) {
+            nodos2D.add(new Nodo2D((int) (Math.random() * 500) + 200, (int) (Math.random() * 500) + 100, Color.black, i));
+        }
+
+        for (int i = 0; i < m.length; i++) {
+            for (int j = 0; j < m.length; j++) {
+                if (m[i][j] != INF) {
+                    aristas2D.add(new Arista2D(nodos2D.get(i), nodos2D.get(j), Color.black, m[i][j]));
+                }
+            }
+        }
+        //System.out.println(aristas2D + "negro");
+        lienzo1.setNodos2D(nodos2D);
+        lienzo1.setAristas2D(aristas2D);
+
+        
+        
         Vertice[] vertices;
         vertices = gr.dijkstra(lienzo1.getSeleccion());
         for (int i = 0; i < vertices.length; i++) {
@@ -550,6 +730,7 @@ public class Principal extends javax.swing.JFrame {
         matrizFloyd.setText(gr.floyd());
     }
 
+    //Listo
     public void floydArchivo() {
         JFileChooser file = new JFileChooser();
         file.showOpenDialog(jPanel1);
@@ -562,13 +743,13 @@ public class Principal extends javax.swing.JFrame {
         gr.setSize(m.length);
 
         for (int i = 0; i < m.length; i++) {
-            nodos2D.add(new Nodo2D((int) (Math.random() * 500) + 200, 200, Color.black, i));
+            nodos2D.add(new Nodo2D((int) (Math.random() * 500) + 200, (int) (Math.random() * 500) + 100, Color.black, i));
         }
 
         for (int i = 0; i < m.length; i++) {
             for (int j = 0; j < m.length; j++) {
                 if (m[i][j] != INF) {
-                    aristas2D.add(new Arista2D(nodos2D.get(i), nodos2D.get(i), Color.black, m[i][j]));
+                    aristas2D.add(new Arista2D(nodos2D.get(i), nodos2D.get(j), Color.black, m[i][j]));
                 }
             }
         }
@@ -580,6 +761,7 @@ public class Principal extends javax.swing.JFrame {
         gr.floyd();
     }
 
+    //Listo
     public void primArchivo() {
         JFileChooser file = new JFileChooser();
         file.showOpenDialog(jPanel1);
@@ -592,7 +774,7 @@ public class Principal extends javax.swing.JFrame {
         gr.setSize(m.length);
 
         for (int i = 0; i < m.length; i++) {
-            nodos2D.add(new Nodo2D((int) (Math.random() * 500) + 200, 200, Color.black, i));
+            nodos2D.add(new Nodo2D((int) (Math.random() * 500) + 200, (int) (Math.random() * 500) + 100, Color.black, i));
         }
 
         for (int i = 0; i < m.length; i++) {
@@ -691,6 +873,48 @@ public class Principal extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Total: " + total);
     }
 
+    public void kruskalArchivo() {
+        JFileChooser file = new JFileChooser();
+        file.showOpenDialog(jPanel1);
+        ArrayList<Nodo2D> nodos2D = new ArrayList<>();
+        ArrayList<Arista2D> aristas2D = new ArrayList<>();
+        Archivos archivo = new Archivos();
+        int[][] m = archivo.leerArchivoGrafo(file.getSelectedFile(), Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de Nodos del grafo")));
+        GrafoKruskal gr = new GrafoKruskal();
+        for (int i = 0; i < m.length; i++) {
+            nodos2D.add(new Nodo2D((int) (Math.random() * 500) + 200, (int) (Math.random() * 500) + 100, Color.black, i));
+        }
+
+        for (int i = 0; i < m.length; i++) {
+            for (int j = 0; j < m.length; j++) {
+                if (m[i][j] != INF) {
+                    aristas2D.add(new Arista2D(nodos2D.get(i), nodos2D.get(i), Color.black, m[i][j]));
+                }
+            }
+        }
+        
+        for (int i = 0; i < nodos2D.size(); i++) {
+            gr.agregarNodo();
+            nodos2D.get(i).setColor(Color.YELLOW);
+        }
+        for (int i = 0; i < aristas2D.size(); i++) {
+            Arista2D a = aristas2D.get(i);
+            a.setColor(Color.BLACK);
+            gr.agregarArista(a.getNodo1().getPos(), a.getNodo2().getPos(), a.getPeso());
+        }
+        gr.kruskal();
+        int total = 0;
+        for (int i = 0; i < aristas2D.size(); i++) {
+            AristaKruskal a = (AristaKruskal) gr.getArista(i);
+            if (a.isRespuesta()) {
+                aristas2D.get(a.getPos()).setColor(Color.YELLOW);
+                total += a.getPeso();
+            }
+        }
+        lienzo1.repaint();
+        JOptionPane.showMessageDialog(this, "Total: " + total);
+    }
+
     public void bicoloreable() {
         ArrayList<Nodo2D> nodos2D = lienzo1.getNodos2D();
         ArrayList<Arista2D> aristas2D = lienzo1.getAristas2D();
@@ -702,6 +926,53 @@ public class Principal extends javax.swing.JFrame {
             Arista2D a = aristas2D.get(i);
             gr.agregarArista(a.getNodo1().getPos(), a.getNodo2().getPos());
         }
+        boolean bicoloreable = gr.bicoloreable();
+        for (int i = 0; i < gr.getNodos().size(); i++) {
+            if (gr.getNodos().get(i).getColor() == 1) {
+                nodos2D.get(i).setColor(Color.WHITE);
+            } else {
+                nodos2D.get(i).setColor(Color.YELLOW);
+            }
+        }
+        lienzo1.repaint();
+        if (bicoloreable) {
+            JOptionPane.showMessageDialog(this, "¡Es bicoloreable :D!");
+        } else {
+            JOptionPane.showMessageDialog(this, "NO es bicoloreable :(");
+        }
+    }
+
+    //Listo
+    public void bicoloreableArchivo() {
+        JFileChooser file = new JFileChooser();
+        file.showOpenDialog(jPanel1);
+        ArrayList<Nodo2D> nodos2D = new ArrayList<>();
+        ArrayList<Arista2D> aristas2D = new ArrayList<>();
+        Archivos archivo = new Archivos();
+        int[][] m = archivo.leerArchivoGrafo(file.getSelectedFile(), Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de Nodos del grafo")));
+        GrafoBicoloreable gr = new GrafoBicoloreable();
+        //Rescatar del matriz de adyacencia
+        for (int i = 0; i < m.length; i++) {
+            nodos2D.add(new Nodo2D((int) (Math.random() * 500) + 200, (int) (Math.random() * 500) + 100, Color.black, i));
+        }
+
+        for (int i = 0; i < m.length; i++) {
+            for (int j = 0; j < m.length; j++) {
+                if (m[i][j] != INF) {
+                    aristas2D.add(new Arista2D(nodos2D.get(i), nodos2D.get(j), Color.black, m[i][j]));
+                }
+            }
+        }
+        //Agregar al Grafo
+        for (int i = 0; i < nodos2D.size(); i++) {
+            gr.agregarNodo();
+        }
+        for (int i = 0; i < aristas2D.size(); i++) {
+            Arista2D a = aristas2D.get(i);
+            gr.agregarArista(a.getNodo1().getPos(), a.getNodo2().getPos());
+        }
+        lienzo1.setNodos2D(nodos2D);
+        lienzo1.setAristas2D(aristas2D);
         boolean bicoloreable = gr.bicoloreable();
         for (int i = 0; i < gr.getNodos().size(); i++) {
             if (gr.getNodos().get(i).getColor() == 1) {
@@ -758,26 +1029,41 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JDialog Advertencia;
     private javax.swing.ButtonGroup Grafos;
     private javax.swing.JPanel PanelCanvas;
+    private javax.swing.JTextArea arbol1;
+    private javax.swing.JTextArea arbol2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextEmpleados;
     private javax.swing.JTextField jTextExpresion;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextResultado;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
