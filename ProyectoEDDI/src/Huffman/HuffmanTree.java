@@ -5,11 +5,13 @@
  */
 package Huffman;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Ilich (D'R)
  */
-public abstract class HuffmanTree implements Comparable<HuffmanTree> {
+public abstract class HuffmanTree implements Comparable<HuffmanTree>, Serializable {
 
     public int frequency;
 

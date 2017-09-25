@@ -5,13 +5,15 @@
  */
 package Huffman;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Ilich (D'R)
  */
-public class HuffmanLeaf extends HuffmanTree {
+public class HuffmanLeaf extends HuffmanTree implements Serializable {
 
-    public final char value; // A letra é atribuida a um nó folha 
+    public final char value;
 
     public HuffmanLeaf(int freq, char value) {
         super(freq);
