@@ -361,14 +361,24 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton7MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String texto = jTextExpresion.getText();
         ArbolBinario arbol = new ArbolBinario(100);
-        
-        if (jTextExpresion.getText().equals("")) {
-            Advertencia.setLocation(this.getHeight() / 2, this.getWidth() / 2);
-            Advertencia.setBounds(new Rectangle(300, 75));
-            Advertencia.setVisible(true);
+        boolean valido = true;
+        int numero;
+
+        for (int i = 0; i < texto.length(); i++) {
+            numero = (int) texto.charAt(i);
+
+            if (numero < 40 || numero > 58 || numero == 44 || numero == 46) {
+                valido = false;
+                break;
+            }
+        }
+
+        if (!valido) {
+            JOptionPane.showMessageDialog(this, "Ingrese valores correctos, por favor");
         } else {
-            arbol.crearArbolExpresiones(arbol.convertirInfija_Postfija(jTextExpresion.getText()));
+            arbol.crearArbolExpresiones(arbol.convertirInfija_Postfija(texto));
             arbol.postOrden(0);
             jTextResultado.setText(arbol.nodoRaiz().getElemento().toString());
             jTextExpresion.setText("");
