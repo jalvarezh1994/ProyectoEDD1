@@ -11,9 +11,11 @@ import E5Floyd.GrafoFloyd;
 import E7Kruskal.AristaKruskal;
 import E7Kruskal.GrafoKruskal;
 import E8Prim.GrafoPrim;
+import TDAs.Archivos;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Rectangle;
+import java.io.File;
 import java.util.ArrayList;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -62,6 +64,7 @@ public class Principal extends javax.swing.JFrame {
         jTextResultado = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         Advertencia.setTitle("DEBE ESCRIBIR UNA EXPRESION");
@@ -239,6 +242,15 @@ public class Principal extends javax.swing.JFrame {
         jTabbedPane1.addTab("Árboles", jPanel2);
 
         jMenu1.setText("File");
+
+        jMenuItem1.setText("Archivo");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Edit");
@@ -276,6 +288,9 @@ public class Principal extends javax.swing.JFrame {
             case 4:
                 kruskal();
                 break;
+            case 3:
+               // floyd();
+                break;
             case 5:
                 prim();
                 break;
@@ -310,19 +325,25 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         ArbolBinario arbol = new ArbolBinario(100);
-        if(jTextExpresion.getText().equals("")){
-            
-            Advertencia.setLocation(this.getHeight()/2, this.getWidth()/2);
+        if (jTextExpresion.getText().equals("")) {
+
+            Advertencia.setLocation(this.getHeight() / 2, this.getWidth() / 2);
             Advertencia.setBounds(new Rectangle(300, 75));
             Advertencia.setVisible(true);
-        }else{
-           arbol.crearArbolExpresiones(arbol.convertirInfija_Postfija(jTextExpresion.getText()));
-           arbol.postOrden(0);
-           jTextResultado.setText(arbol.nodoRaiz().getElemento().toString());
-           jTextExpresion.setText("");
+        } else {
+            arbol.crearArbolExpresiones(arbol.convertirInfija_Postfija(jTextExpresion.getText()));
+            arbol.postOrden(0);
+            jTextResultado.setText(arbol.nodoRaiz().getElemento().toString());
+            jTextExpresion.setText("");
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        floydArchivo();
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     public final int INF = (int) Double.POSITIVE_INFINITY;
 
@@ -341,6 +362,34 @@ public class Principal extends javax.swing.JFrame {
                 }
             }
         }
+        gr.floyd();
+    }
+
+    public void floydArchivo() {
+        ArrayList<Nodo2D> nodos2D = new ArrayList<>();
+        ArrayList<Arista2D> aristas2D = new ArrayList<>();
+        Archivos archivo = new Archivos();
+        int[][] m = archivo.leerArchivoGrafo(new File("C:\\Users\\Diego\\Desktop\\Matriz.txt"), 5);
+        GrafoFloyd gr = new GrafoFloyd(m.length);
+        gr.setAdyacencia(m);
+        gr.setSize(m.length);
+        
+        for (int i = 0; i < m.length; i++) {
+            nodos2D.add(new Nodo2D((int) (Math.random() * 500) + 200, 200 , Color.black, i));
+        }
+
+        for (int i = 0; i < m.length; i++) {
+            for (int j = 0; j < m.length; j++) {
+                if (m[i][j]!=INF) {
+                    aristas2D.add(new Arista2D(nodos2D.get(i), nodos2D.get(i), Color.black, m[i][j]));
+                }
+            }
+        }
+        System.out.println(aristas2D);
+        lienzo1.setNodos2D(nodos2D);
+        lienzo1.setAristas2D(aristas2D);
+
+        lienzo1.repaint();
         gr.floyd();
     }
 
@@ -473,6 +522,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTabbedPane jTabbedPane1;
