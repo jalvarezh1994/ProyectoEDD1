@@ -14,7 +14,8 @@ import javax.swing.JOptionPane;
  */
 public class GrafoDijkstra extends GrafoDirigidoMatriz {
 
-    int INF = (int) Double.POSITIVE_INFINITY;
+    private Vertice[] solucion;
+    private int INF = (int) Double.POSITIVE_INFINITY;
 
     public GrafoDijkstra(int nodosMaximos) {
         super(nodosMaximos);
@@ -23,7 +24,7 @@ public class GrafoDijkstra extends GrafoDirigidoMatriz {
     public Vertice[] dijkstra(int vertice) {
         if (vertice >= 0 && vertice < size) {
             boolean[] seleccionado = new boolean[size];
-            Vertice[] solucion = new Vertice[size];
+            solucion = new Vertice[size];
             for (int i = 0; i < size; i++) {
                 solucion[i] = new Vertice(adyacencia[vertice][i], vertice);
             }
@@ -70,4 +71,13 @@ public class GrafoDijkstra extends GrafoDirigidoMatriz {
             return null;
         }
     }
+
+    public Vertice[] getSolucion() {
+        return solucion;
+    }
+
+    public void setSolucion(Vertice[] solucion) {
+        this.solucion = solucion;
+    }
+
 }

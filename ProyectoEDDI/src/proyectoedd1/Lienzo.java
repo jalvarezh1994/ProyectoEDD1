@@ -5,6 +5,8 @@
  */
 package proyectoedd1;
 
+import E6Dijkstra.GrafoDijkstra;
+import E6Dijkstra.Vertice;
 import java.awt.BasicStroke;
 import java.awt.Canvas;
 import java.awt.Color;
@@ -145,8 +147,8 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
     private void dijkstra(MouseEvent e) {
         boolean presionado = false;
         for (int i = 0; i < nodos2D.size(); i++) {
-            Nodo2D n = nodos2D.get(i);
-            Nodo2D n2 = null;
+            Nodo2D n = nodos2D.get(i);//El que se está seleccionando
+            Nodo2D n2 = null;//El que ya está seleccionado
             if (seleccion != -1) {
                 n2 = nodos2D.get(seleccion);
             }
@@ -195,6 +197,23 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
                         adyacencia[n2.getPos()][n.getPos()] = pesoEntero;
                         adyacencia[n.getPos()][n2.getPos()] = pesoEntero2;
                     }
+                    if (e.isShiftDown()) {
+                        GrafoDijkstra gr = caminoMasCorto();
+                        Vertice[] solucion = gr.getSolucion();
+                        int pos = n.getPos();
+                        do {
+                            nodos2D.get(pos).setColor(Color.yellow);
+                            for (int j = 0; j < aristas2D.size(); j++) {
+                                Arista2D a = aristas2D.get(j);
+                                if (a.contieneNodo(pos)
+                                        && a.contieneNodo(solucion[pos].getProcedencia())) {
+                                    a.setColor(Color.yellow);
+                                }
+                            }
+                            pos = solucion[pos].getProcedencia();
+                            nodos2D.get(pos).setColor(Color.yellow);
+                        } while (solucion[pos].getProcedencia() != pos);
+                    }
                 } catch (Exception ex) {
                 }
                 seleccion = i;
@@ -209,6 +228,28 @@ public class Lienzo extends Canvas implements MouseListener, MouseMotionListener
             }
         }
         repaint();
+    }
+
+    private GrafoDijkstra caminoMasCorto() {
+        ArrayList<Nodo2D> nodos2D = this.getNodos2D();
+        ArrayList<Arista2D> aristas2D = this.getAristas2D();
+        GrafoDijkstra gr = new GrafoDijkstra(this.getTotalAdyacencia());
+        for (int i = 0; i < this.getNodos2D().size(); i++) {
+            gr.agregarNodo();
+        }
+        for (int i = 0; i < this.getAdyacenciaSize(); i++) {
+            for (int j = 0; j < this.getAdyacenciaSize(); j++) {
+                gr.agregarArista(i, j, this.getAdyacencia()[i][j]);
+            }
+        }
+        Vertice[] vertices;
+        vertices = gr.dijkstra(this.getSeleccion());
+        for (int i = 0; i < vertices.length; i++) {
+            nodos2D.get(i).setTexto("[" + vertices[i].getPesoAcumulado() + ","
+                    + vertices[i].getProcedencia() + "]");
+        }
+        this.repaint();
+        return gr;
     }
 
     private void kruskal(MouseEvent e) {
